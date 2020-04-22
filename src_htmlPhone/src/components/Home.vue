@@ -60,7 +60,7 @@ export default {
   methods: {
     ...mapActions(['closePhone', 'setMessages']),
     onLeft () {
-      this.currentSelect = (this.currentSelect + 2) % (this.AppsHome.length + 1)
+      this.currentSelect = (this.currentSelect + 1) % (this.AppsHome.length + 1)
     },
     onRight () {
       this.currentSelect = (this.currentSelect + this.AppsHome.length) % (this.AppsHome.length + 1)
