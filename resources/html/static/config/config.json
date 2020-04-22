@@ -56,8 +56,8 @@
     "Custom URL": "URL"
   },
   "background_default": {
-    "label": "Playa salvaje",
-    "value": "playa.jpg"
+    "label": "Palmeras",
+    "value": "back002.jpg"
   },
 
 
@@ -81,8 +81,8 @@
   },
 
   "coque_default": {
-    "label": "Sansumg S8",
-    "value": "funda_blanca.png"
+    "label": "Funda menta",
+    "value": "menta.png"
   },
 
   "sonido_default": {
