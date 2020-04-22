@@ -65,7 +65,7 @@
     "Gray": "grey.png",
     "Salmon": "pink.png",
     "Red": "red.png",
-    "Mint": "mint.png",
+    "Mint": "s8.png",
     "Blue": "blue.png",
     "Iphone 11": "no_cover.png"
   },
@@ -82,7 +82,7 @@
 
   "coque_default": {
     "label": "Mint",
-    "value": "mint.png"
+    "value": "s8.png"
   },
 
   "sonido_default": {

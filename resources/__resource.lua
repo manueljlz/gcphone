@@ -12,7 +12,7 @@ files {
 	
 	-- Coque
 	'html/static/img/coque/blue.png',
-	'html/static/img/coque/mint.png',
+	'html/static/img/coque/s8.png',
 	'html/static/img/coque/red.png',
 	'html/static/img/coque/grey.png',
 	'html/static/img/coque/pink.png',
