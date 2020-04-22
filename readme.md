@@ -34,6 +34,10 @@
   - Paty Blue (Diseñadora gráfica) @psasfer
   - Sanlaris (Colaboradora) @Sanlaris_game
 
+  - Original gcphone by Gannun https://github.com/N3MTV/gcphone
+
+
+
 
 ## License
 
