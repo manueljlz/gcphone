@@ -40,34 +40,34 @@
   "fileUploadService_Field": "files[]",
 
   "background": {
-    "Desierto blanco": "back001.jpg",
-    "Palmeras": "back002.jpg",
-    "Santa Mónica": "back003.jpg",
+    "White desert": "back001.jpg",
+    "Palms": "back002.jpg",
+    "Santa Mónica Beach": "back003.jpg",
 
-    "Ruta 66": "color.jpg",
-    "Tokyo colorido": "humo.jpg",
-    "Planeta Oscuro": "iluminacion.jpg",
+    "Route 66": "color.jpg",
+    "Classic tokyo": "humo.jpg",
+    "Dark planet": "iluminacion.jpg",
 
     "AstroNeon": "neon.jpg",
-    "Planeta iluminado": "oscuridad.jpg",
-    "Playa salvaje": "playa.jpg",
-    "Paisaje invernal": "paisajes.jpg",
-    "Tokio": "tokio.jpg",
+    "Illuminated planet": "oscuridad.jpg",
+    "Wild beach": "playa.jpg",
+    "Winter landscape": "paisajes.jpg",
+    "Tokio neon": "tokio.jpg",
     "Custom URL": "URL"
   },
   "background_default": {
-    "label": "Palmeras",
-    "value": "back002.jpg"
+    "label": "Santa Mónica Beach",
+    "value": "back003.jpg"
   },
 
 
   "coque": {
-    "Funda gris": "silicona_gris.png",
-    "Funda salmón": "silicona_salmon.png",
-    "Funda roja": "silicona_amarilla.png",
-    "Funda menta": "menta.png",
-    "Funda cielo": "cielo.png",
-    "Sin funda": "sin_funda.png"
+    "Gray": "grey.png",
+    "Salmon": "pink.png",
+    "Red": "red.png",
+    "Mint": "mint.png",
+    "Blue": "blue.png",
+    "Iphone 11": "no_cover.png"
   },
 
   "sonido": {
@@ -81,8 +81,8 @@
   },
 
   "coque_default": {
-    "label": "Funda menta",
-    "value": "menta.png"
+    "label": "Mint",
+    "value": "mint.png"
   },
 
   "sonido_default": {
@@ -92,17 +92,17 @@
 
 
   "serviceCall": [{
-      "display": "Policía",
+      "display": "Police",
       "icon": "/html/static/img/icons_app/policia.png",
       "subMenu": [{
-          "title": "Enviar un mensaje",
+          "title": "Send a message",
           "eventName": "esx_addons_gcphone:call",
           "type": {
             "number": "police"
           }
         },
         {
-          "title": "Llamar a emergencias",
+          "title": "Call emergency number",
           "eventName": "gcphone:autoCallNumber",
           "type": {
             "number": "911"
@@ -111,14 +111,25 @@
       ]
     },
     {
-      "display": "Ambulancia",
+      "display": "Ambulance",
       "backgroundColor": "red",
       "icon": "/html/static/img/icons_app/lsfd.png",
       "subMenu": [{
-        "title": "Enviar un mensaje",
+        "title": "Send a message",
         "eventName": "esx_addons_gcphone:call",
         "type": {
           "number": "ambulance"
+        }
+      }]
+    },
+    {
+      "display": "Taxi",
+      "backgroundColor": "yellow",
+      "subMenu": [{
+        "title": "Send a message",
+        "eventName": "esx_addons_gcphone:call",
+        "type": {
+          "number": "taxi"
         }
       }]
     }
@@ -126,14 +137,20 @@
 
   "defaultContacts": [{
       "number": "ambulance",
-      "display": "Ambulancia",
+      "display": "Ambulance",
+      "backgroundColor": "red",
       "icon": "/html/static/img/icons_app/lsfd.png"
     },
     {
       "number": "police",
-      "display": "Policía",
+      "display": "Police",
       "backgroundColor": "blue",
       "icon": "/html/static/img/icons_app/policia.png"
+    },
+    {
+      "number": "taxi",
+      "display": "Taxi",
+      "backgroundColor": "yellow"
     }
   ],
 
@@ -248,8 +265,8 @@
       "name": "Notes",
       "fr_FR__name": "Notes ",
       "en_US__name": "Notes ",
-      "de_DE__name": "Notes ",
-      "pl_PL__name": "Notes ",
+      "de_DE__name": "Notizen ",
+      "pl_PL__name": "Notatki ",
       "es_ES__name": "Notas ",
       "routeName": "notes",
       "icons": "/html/static/img/icons_app/notes.png"
@@ -362,6 +379,13 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Oups ... votre mot de passe n'a pas pu être modifié",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Les mots de passe ne corresponde pas",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Mot de passe trop court",
+      "APP_NOTES": "Notes",
+      "APP_BANK_TITLE_BALANCE": "Solde du compte",
+      "APP_BANK_TITLE_ENTER_MONEY": "Numéro de compte",
+      "APP_BANK_BUTTON_TRANSFER": "Transfert",
+      "APP_BANK_BUTTON_CANCEL": "Annuler",
+      "APP_DARKTCHAT_NEW_NOTE": "Ajouter une note",
+      "APP_DARKTCHAT_DELETE_NOTE": "Supprimer une note",
 
 
       "TIMEAGO": [
@@ -379,17 +403,18 @@
     "en_US": {
       "NAME": "English",
       "PHONE_WARNING_MESSAGE": "memento",
-      "PHONE_WARNING_MESSAGE_MESS": "news",
+      "PHONE_WARNING_MESSAGE_MESS": "Messages",
       "CONFIRM": "Accept",
-      "CANCEL": "abort",
-      "APP_CONFIG_TITLE": "parameter",
+      "CANCEL": "Abort",
+      "APP_CONFIG_TITLE": "Settings",
       "APP_CONFIG_MY_MUNBER": "My number",
-      "APP_CONFIG_WALLPAPER": "wallpaper",
-      "APP_CONFIG_CASE": "telephone cover",
+      "APP_CONFIG_WALLPAPER": "Wallpaper",
+      "APP_CONFIG_CASE": "Telephone cover",
       "APP_CONFIG_SOUND": "Ringtone",
-      "APP_CONFIG_ZOOM": "zoom",
-      "APP_CONFIG_VOLUME": "volume",
+      "APP_CONFIG_ZOOM": "Zoom",
+      "APP_CONFIG_VOLUME": "Volume",
       "APP_CONFIG_LANGUAGE": "Language",
+      "APP_PHONE_CALL_ANONYMOUS": "Anonymous call",
       "APP_CONFIG_MOUSE_SUPPORT": "Mouse control",
       "APP_CONFIG_RESET": "format",
       "APP_CONFIG_RESET_CONFIRM": "DELETE ALL",
@@ -411,7 +436,7 @@
       "APP_CONTACT_DELETE": "Delete",
       "APP_CONTACT_LABEL_NAME": "First name - Last name",
       "APP_CONTACT_LABEL_NUMBER": "number",
-      "APP_MESSAGE_TITLE": "news",
+      "APP_MESSAGE_TITLE": "Messages",
       "APP_MESSAGE_NEW_MESSAGE": "New Message",
       "APP_MESSAGE_ERASE_CONVERSATION": "Delete the call",
       "APP_MESSAGE_ERASE_ALL_CONVERSATIONS": "Delete all conv.",
@@ -432,7 +457,7 @@
       "APP_TWITTER_VIEW_TWITTER": "Twitter",
       "APP_TWITTER_VIEW_TOP_TWEETS": "top tweets",
       "APP_TWITTER_VIEW_TWEETER": "tweets",
-      "APP_TWITTER_VIEW_SETTING": "parameter",
+      "APP_TWITTER_VIEW_SETTING": "Settings",
       "APP_TWITTER_NEW_ACCOUNT_USERNAME": "Username (>= 4)",
       "APP_TWITTER_NEW_ACCOUNT_PASSWORD": "Password (>= 6)",
       "APP_TWITTER_NEW_ACCOUNT_PASSWORD_CONFIRM": "Confirm password",
@@ -440,7 +465,7 @@
       "APP_TWITTER_PLACEHOLDER_MESSAGE": "What's the matter with you?",
       "APP_TWITTER_BUTTON_ACTION_TWEETER": "Tweeter",
       "APP_TWITTER_ACCOUNT_LOGIN": "Log in to the website",
-      "APP_TWITTER_ACCOUNT_LOGOUT": "Disconnect from location",
+      "APP_TWITTER_ACCOUNT_LOGOUT": "Logout",
       "APP_TWITTER_ACCOUNT_PARAM": "My account",
       "APP_TWITTER_ACCOUNT_AVATAR": "Changing the Avatar",
       "APP_TWITTER_ACCOUNT_CHANGE_PASSWORD": "Change password",
@@ -450,7 +475,7 @@
       "APP_TWIITER_ACCOUNT_CANCEL": "abort",
       "APP_TWITTER_ACCOUNT_USERNAME": "username",
       "APP_TWITTER_ACCOUNT_PASSWORD": "password",
-      "APP_TWITTER_NOTIFICATION": "notification",
+      "APP_TWITTER_NOTIFICATION": "notifications",
       "APP_TWITTER_NOTIFICATION_WHEN": "To be notified",
       "APP_TWITTER_NOTIFICATION_ALL": "All News",
       "APP_TWITTER_NOTIFICATION_MENTION": "Just mention",
@@ -467,6 +492,13 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Oops.... Your password could not be changed.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Passwords do not match",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Password too short",
+      "APP_NOTES": "Notes",
+      "APP_BANK_TITLE_BALANCE": "Available balance",
+      "APP_BANK_TITLE_ENTER_MONEY": "Enter quantity",
+      "APP_BANK_BUTTON_TRANSFER": "Transfer",
+      "APP_BANK_BUTTON_CANCEL": "Cancel",
+      "APP_DARKTCHAT_NEW_NOTE": "New note",
+      "APP_DARKTCHAT_DELETE_NOTE": "Delete note",
 
       "TIMEAGO": [
         "just now",
@@ -500,6 +532,7 @@
       "APP_PHONE_DELETE": "Löschen",
       "APP_PHONE_DELETE_ALL": "Alle löschen",
       "APP_PHONE_TITLE": "Telefon",
+      "APP_PHONE_CALL_ANONYMOUS": "Anonymer Anruf",
       "APP_PHONE_MENU_FAVORITES": "Favoriten",
       "APP_PHONE_MENU_RECENTS": "Kürzlich",
       "APP_PHONE_MENU_CONTACTS": "Kontakte",
@@ -576,6 +609,13 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Ups.... dein Passwort konnte nicht geändert werden.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Passwörter stimmen nicht überein",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Passwort zu kurz",
+      "APP_NOTES": "Notizen",
+      "APP_BANK_TITLE_BALANCE": "Kontostand",
+      "APP_BANK_TITLE_ENTER_MONEY": "Kontonummer",
+      "APP_BANK_BUTTON_TRANSFER": "Übertragen",
+      "APP_BANK_BUTTON_CANCEL": "Abbrechen",
+      "APP_DARKTCHAT_NEW_NOTE": "Neue Notiz",
+      "APP_DARKTCHAT_DELETE_NOTE": "Löschen Sie die Notiz",
 
       "TIMEAGO": [
         "jetzt gerade",
@@ -603,6 +643,7 @@
       "APP_CONFIG_ZOOM": "przybliżanie",
       "APP_CONFIG_VOLUME": "objętość",
       "APP_CONFIG_LANGUAGE": "Język",
+      "APP_PHONE_CALL_ANONYMOUS": "Połączenie anonimowe",
       "APP_CONFIG_RESET": "format",
       "APP_CONFIG_RESET_CONFIRM": "DELETE ALL",
       "APP_PHONE_CALL": "rozmowa telefoniczna",
@@ -679,6 +720,13 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Ups....... Twoje hasło nie mogło zostać zmienione.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Hasła nie pasują do siebie.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Hasło jest za krótkie",
+      "APP_NOTES": "Notatki",
+      "APP_BANK_TITLE_BALANCE": "Saldo konta",
+      "APP_BANK_TITLE_ENTER_MONEY": "Numer konta",
+      "APP_BANK_BUTTON_TRANSFER": "Przeniesienie",
+      "APP_BANK_BUTTON_CANCEL": "Anuluj",
+      "APP_DARKTCHAT_NEW_NOTE": "Nowa notatka",
+      "APP_DARKTCHAT_DELETE_NOTE": "Usuń notatkę",
 
       "TIMEAGO": [
         "tylko teraz",
@@ -790,6 +838,11 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Contraseña demasiado corta",
       "APP_PHONE_NUMBER_HIDDEN": "Número oculto",
       "APP_PHONE_NUMBER_UNKNOWN": "Número desconocido",
+      "APP_NOTES": "Notas",
+      "APP_BANK_TITLE_BALANCE": "Saldo en la cuenta",
+      "APP_BANK_TITLE_ENTER_MONEY": "Número de cuenta",
+      "APP_BANK_BUTTON_TRANSFER": "Transferencia",
+      "APP_BANK_BUTTON_CANCEL": "Cancelar",
 
       "TIMEAGO": [
         "ahora",
@@ -893,6 +946,8 @@
       "APP_TWITTER_NOTIF_NEW_PASSWORD_ERROR": "Oops.... Tvé heslo nemohlo být změněno.",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_MISS_MATCH": "Hesla se neshodují",
       "APP_TWITTER_NOTIF_NEW_PASSWORD_LENGTH_ERROR": "Heslo je příliš krátké",
+      "APP_DARKTCHAT_NEW_NOTE": "Nová poznámka",
+      "APP_DARKTCHAT_DELETE_NOTE": "Smažte poznámku",
 
       "TIMEAGO": [
         "nyní",

@@ -6,7 +6,7 @@
       <InfoBare style="width: 326px;top: -207px;margin-left: -17px;"/>
       <img class="logo_maze" src="/html/static/img/app_bank/fleeca_tar.png">
       <div class="num-tarj" >
-        <span  class="moneyTitle">Saldo disponible</span>
+        <span  class="moneyTitle">{{ IntlString('APP_BANK_TITLE_BALANCE') }}</span>
         <span class="moneyTitle">{{ bankAmontFormat }}$</span>
       </div>
       
@@ -18,13 +18,13 @@
         </div>
 
         <div class="element-content" ref="form"> 
-          <input style=" border-radius: 23px; font-size: 16px;" v-bind:class="{ select: 0 === currentSelect}" v-autofocus oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" ref="form0" v-model="id" class="paragonder" placeholder="Número de cuenta">
+          <input style=" border-radius: 23px; font-size: 16px;" v-bind:class="{ select: 0 === currentSelect}" v-autofocus oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" ref="form0" v-model="id" class="paragonder" placeholder="ID">
         </div> 
 
         <div class="element-content">           
-          <input  style=" border-radius: 23px; font-size: 16px;" v-bind:class="{ select: 1 === currentSelect}" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" ref="form1" v-model="paratutar" class="paragonder" placeholder="Ingresar cantidad">
-          <button v-bind:class="{ select: 2 === currentSelect}" ref="form2" id="gonder" @click.stop="paragonder" class="buton-transfer">Transferencia</button><br/>
-          <button v-bind:class="{ select: 3 === currentSelect}" ref="form3" id="iptal" @click.stop="iptal" class="buton-cancel">Cancelar</button>
+          <input  style=" border-radius: 23px; font-size: 16px;" v-bind:class="{ select: 1 === currentSelect}" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" ref="form1" v-model="paratutar" class="paragonder" placeholder="$">
+          <button  v-bind:class="{ select: 2 === currentSelect}" ref="form2" id="gonder" @click.stop="paragonder" class="buton-transfer">{{ IntlString('APP_BANK_BUTTON_TRANSFER') }}</button><br/>
+          <button  v-bind:class="{ select: 3 === currentSelect}" ref="form3" id="iptal" @click.stop="iptal" class="buton-cancel">{{ IntlString('APP_BANK_BUTTON_CANCEL') }}</button>
         </div>
         
       </div>
@@ -105,7 +105,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['bankAmont']),
+    ...mapGetters(['bankAmont', 'IntlString']),
     bankAmontFormat () {
       return Intl.NumberFormat().format(this.bankAmont)
     }

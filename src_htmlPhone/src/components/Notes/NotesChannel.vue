@@ -1,6 +1,6 @@
 <template>
   <div style="width: 334px; height: 742px; color: white" class="phone_app">
-    <PhoneTitle :title="IntlString('Notas')" backgroundColor="#f8d344" color="white" @back="onBack" />
+    <PhoneTitle :title="IntlString('APP_NOTES')" backgroundColor="#f8d344" color="white" @back="onBack" />
     <div  style="backgroundColor: white;" class="elements" @contextmenu.prevent="addChannelOption">
         <div  
           >
