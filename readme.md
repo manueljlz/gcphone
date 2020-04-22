@@ -15,7 +15,7 @@
 
   - Contact list
   - Send SMS
-  - Calls up to 32-slots
+  - Calls
   - Anonymous calls
   - Bank application with bank transfers
   - Reddit app
