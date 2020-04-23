@@ -14,13 +14,12 @@ files {
 	'html/static/config/config.json',
 	
 	-- Coque
-	'html/static/img/coque/amarilla.png',
-	'html/static/img/coque/cielo.png',
-	'html/static/img/coque/menta.png',
-	'html/static/img/coque/silicona_amarilla.png',
-	'html/static/img/coque/silicona_gris.png',
-	'html/static/img/coque/silicona_salmon.png',
-	'html/static/img/coque/sin_funda.png',
+	'html/static/img/coque/blue.png',
+	'html/static/img/coque/s8.png',
+	'html/static/img/coque/red.png',
+	'html/static/img/coque/grey.png',
+	'html/static/img/coque/pink.png',
+	'html/static/img/coque/no_cover.png',
 
 	
 	-- Background
