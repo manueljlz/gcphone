@@ -25,7 +25,7 @@
 
   "useFormatNumberFrance": true,
 
-  "useWebRTCVocal": true,
+  "useWebRTCVocal": false,
   "RTCConfig": {
     "iceServers": [{
       "urls": ["turn:barrax.needrp.net"],
