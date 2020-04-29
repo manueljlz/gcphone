@@ -3,6 +3,11 @@
 -- #Version 2.0
 --====================================================================================
 
+local ESX = nil
+TriggerEvent('esx:getSharedObject', function(obj) 
+    ESX = obj 
+end)
+
 math.randomseed(os.time()) 
 
 --- Pour les numero du style XXX-XXXX
@@ -45,16 +50,16 @@ end) --]]
 --  Utils
 --====================================================================================
 function getSourceFromIdentifier(identifier, cb)
-    TriggerEvent("es:getPlayers", function(users)
-        for k , user in pairs(users) do
-            if (user.getIdentifier ~= nil and user.getIdentifier() == identifier) or (user.identifier == identifier) then
-                cb(k)
-                return
-            end
-        end
-    end)
-    cb(nil)
+	local users = ESX.GetPlayers()
+	for k , user in pairs(users) do
+		local xplayer = ESX.GetPlayerFromId(user)
+        	if (xplayer.getIdentifier ~= nil and xplayer.getIdentifier() == identifier) or (xplayer.identifier == identifier) then
+            		cb(k)
+            		return
+		end
+	end
 end
+
 function getNumberPhone(identifier)
     local result = MySQL.Sync.fetchAll("SELECT users.phone_number FROM users WHERE users.identifier = @identifier", {
         ['@identifier'] = identifier
@@ -64,6 +69,7 @@ function getNumberPhone(identifier)
     end
     return nil
 end
+
 function getIdentifierByPhoneNumber(phone_number) 
     local result = MySQL.Sync.fetchAll("SELECT users.identifier FROM users WHERE users.phone_number = @phone_number", {
         ['@phone_number'] = phone_number
@@ -76,10 +82,11 @@ end
 
 
 function getPlayerID(source)
-    local identifiers = GetPlayerIdentifiers(source)
-    local player = getIdentifiant(identifiers)
+    local xplayer = ESX.GetPlayerFromId(source)
+    local player = xplayer.identifier
     return player
 end
+
 function getIdentifiant(id)
     for _, v in ipairs(id) do
         return v
@@ -561,7 +568,7 @@ end)
 --====================================================================================
 --  OnLoad
 --====================================================================================
-AddEventHandler('es:playerLoaded',function(source)
+AddEventHandler('esx:playerLoaded',function(source)
     local sourcePlayer = tonumber(source)
     local identifier = getPlayerID(source)
     getOrGeneratePhoneNumber(sourcePlayer, identifier, function (myPhoneNumber)
