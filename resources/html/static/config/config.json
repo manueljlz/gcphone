@@ -444,7 +444,7 @@
       "APP_CONTACT_LABEL_NUMBER": "Number",
       "APP_MESSAGE_TITLE": "Messages",
       "APP_MESSAGE_NEW_MESSAGE": "New message",
-      "APP_MESSAGE_ERASE_CONVERSATION": "Delete the call",
+      "APP_MESSAGE_ERASE_CONVERSATION": "Delete conversation",
       "APP_MESSAGE_ERASE_ALL_CONVERSATIONS": "Delete all conversations",
       "APP_MESSAGE_SEND_GPS": "Send GPS coordinates",
       "APP_MESSAGE_SET_GPS": "Set GPS waypoint",
