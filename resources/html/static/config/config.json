@@ -25,7 +25,7 @@
 
   "useFormatNumberFrance": true,
 
-  "useWebRTCVocal": false,
+  "useWebRTCVocal": true,
   "RTCConfig": {
     "iceServers": [{
       "urls": ["turn:barrax.needrp.net"],
@@ -40,19 +40,19 @@
   "fileUploadService_Field": "files[]",
 
   "background": {
-    "White desert": "back001.jpg",
+    "White Desert": "back001.jpg",
     "Palms": "back002.jpg",
     "Santa Mónica Beach": "back003.jpg",
 
     "Route 66": "color.jpg",
-    "Classic tokyo": "humo.jpg",
-    "Dark planet": "iluminacion.jpg",
+    "Classic Tokyo": "humo.jpg",
+    "Dark Planet": "iluminacion.jpg",
 
     "AstroNeon": "neon.jpg",
-    "Illuminated planet": "oscuridad.jpg",
-    "Wild beach": "playa.jpg",
-    "Winter landscape": "paisajes.jpg",
-    "Tokio neon": "tokio.jpg",
+    "Illuminated Planet": "oscuridad.jpg",
+    "Wild Beach": "playa.jpg",
+    "Winter Landscape": "paisajes.jpg",
+    "Tokio Neon": "tokio.jpg",
     "Custom URL": "URL"
   },
   "background_default": {
@@ -67,7 +67,7 @@
     "Red": "red.png",
     "Mint": "s8.png",
     "Blue": "blue.png",
-    "Iphone 11": "no_cover.png"
+    "iPhone 11": "no_cover.png"
   },
 
   "sonido": {
@@ -75,7 +75,7 @@
     "Safaera": "safaera.ogg",
     "Bella Ciao": "bella_ciao.ogg",
     "Casa Papel": "casa_papel.ogg",
-    "Iphone 11": "iphone_11.ogg",
+    "iPhone 11": "iphone_11.ogg",
     "Tusa": "tusa.ogg",
     "XXXTentacion": "xtentacion.ogg"
   },
@@ -95,7 +95,7 @@
       "display": "Police",
       "icon": "/html/static/img/icons_app/policia.png",
       "subMenu": [{
-          "title": "Send a message",
+          "title": "Send message",
           "eventName": "esx_addons_gcphone:call",
           "type": {
             "number": "police"
@@ -406,7 +406,10 @@
       "PHONE_WARNING_MESSAGE_MESS": "Messages",
       "CONFIRM": "Confirm",
       "CANCEL": "Cancel",
-      "APP_MESSAGE_MESS_NUMBER": "Number",
+      "APP_MESSAGE_MESS_NUMBER": "Manage",
+      "APP_MESSAGE_MESS_SMS": "Send message",
+      "APP_MESSAGE_MESS_CALL": "Call",
+      "APP_MESSAGE_MESS_COPY": "Copy number",
       "APP_CONFIG_TITLE": "Settings",
       "APP_CONFIG_MY_MUNBER": "My number",
       "APP_CONFIG_WALLPAPER": "Wallpaper",
@@ -437,8 +440,8 @@
       "APP_CONTACT_SAVE": "Save",
       "APP_CONTACT_CANCEL": "Cancel",
       "APP_CONTACT_DELETE": "Delete",
-      "APP_CONTACT_LABEL_NAME": "First name - Last name",
-      "APP_CONTACT_LABEL_NUMBER": "number",
+      "APP_CONTACT_LABEL_NAME": "Name",
+      "APP_CONTACT_LABEL_NUMBER": "Number",
       "APP_MESSAGE_TITLE": "Messages",
       "APP_MESSAGE_NEW_MESSAGE": "New message",
       "APP_MESSAGE_ERASE_CONVERSATION": "Delete the call",
