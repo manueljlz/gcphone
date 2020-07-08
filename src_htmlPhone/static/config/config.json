@@ -130,7 +130,7 @@
         "eventName": "esx_addons_gcphone:call",
         "type": {
           "number": "taxi"
-        }
+       }
       }]
     }
   ],
