@@ -66,7 +66,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['startCall', 'appelsDeleteHistorique', 'appelsDeleteAllHistorique']),
+    ...mapActions(['startCall', 'appelsDeleteHistorique', 'appelsDeleteAllHistorique', 'addContact']),
     getContact (num) {
       const find = this.contacts.find(e => e.number === num)
       return find
@@ -89,11 +89,13 @@ export default {
     async selectItem (item) {
       const numero = item.num
       const isValid = numero.startsWith('#') === false
+      alert(numero)
       this.ignoreControls = true
       let choix = [
         {id: 1, title: this.IntlString('APP_PHONE_DELETE'), icons: 'fa-trash', color: 'orange'},
         {id: 2, title: this.IntlString('APP_PHONE_DELETE_ALL'), icons: 'fa-trash', color: 'red'},
-        {id: 3, title: this.IntlString('CANCEL'), icons: 'fa-undo'}
+        {id: 3, title: this.IntlString('CANCEL'), icons: 'fa-undo'},
+        {id: 4, title: this.IntlString('Añadir contacto'), icons: 'fa-undo'}
       ]
       if (isValid === true) {
         choix = [{id: 0, title: this.IntlString('APP_PHONE_CALL'), icons: 'fa-phone'}, ...choix]
@@ -109,11 +111,24 @@ export default {
           break
         case 2 :
           this.appelsDeleteAllHistorique()
+          break
+        case 4 :
+          this.save(numero)
       }
     },
     async onEnter () {
       if (this.ignoreControls === true) return
       this.selectItem(this.historique[this.selectIndex])
+    },
+    save (numero) {
+      if (this.id !== -1) {
+        this.addContact({
+          number: numero
+        })
+      } else {
+        alert('No añadido')
+      }
+      history.back()
     },
     stylePuce (data) {
       data = data || {}

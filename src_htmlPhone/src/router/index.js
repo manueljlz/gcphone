@@ -51,7 +51,7 @@ export default new Router({
       component: Contacts
     },
     {
-      path: '/contact/:id',
+      path: '/contact/:id/:number?',
       name: 'contacts.view',
       component: Contact
     },
