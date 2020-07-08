@@ -54,11 +54,7 @@ export default {
           this.startCall({ numero: '#' + data.number })
         } else if (rep.id === 6) {
           this.$router.push({name: 'messages.view', params: data})
-<<<<<<< HEAD
         } else if (rep.id === 7) {
-=======
-        }else if (rep.id === 7) {
->>>>>>> 8d83e6350ec95a9f961493a23d226c486516d9e8
           this.$router.push({name: 'contacts.view', params: {id: 0, number: data.number}})
         }
         this.disableList = false
