@@ -539,6 +539,19 @@ AddEventHandler('esx:playerLoaded',function(playerId, xPlayer)
     end)
 end)
 
+RegisterServerEvent('gcPhone:allUpdate')
+AddEventHandler('gcPhone:allUpdate', function()
+    local sourcePlayer = tonumber(source)
+    local xplayer = ESX.GetPlayerFromId(source)
+    local identifier = xplayer.identifier
+    local num = getNumberPhone(identifier)
+    TriggerClientEvent("gcPhone:myPhoneNumber", sourcePlayer, num)
+    TriggerClientEvent("gcPhone:contactList", sourcePlayer, getContacts(identifier))
+    TriggerClientEvent("gcPhone:allMessage", sourcePlayer, getMessages(identifier))
+    TriggerClientEvent('gcPhone:getBourse', sourcePlayer, getBourse())
+    sendHistoriqueCall(sourcePlayer, num)
+end)
+
 --[[ AddEventHandler('onMySQLReady', function ()
     MySQL.Async.fetchAll("DELETE FROM phone_messages WHERE (DATEDIFF(CURRENT_DATE,time) > 10)")
 end) --]]
