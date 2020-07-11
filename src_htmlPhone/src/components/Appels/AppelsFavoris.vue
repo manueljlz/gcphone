@@ -30,9 +30,14 @@ export default {
       Modal.CreateModal({choix: [...itemSelect.subMenu, {title: 'Cancelar'}]}).then(rep => {
         this.ignoreControls = false
         if (rep.title === 'Cancelar') return
+<<<<<<< HEAD
         /* this.$phoneAPI.callEvent(rep.eventName, rep.type)
         this.$router.push({name: 'home'}) */
         this.$router.push({ name: 'messages.view', params: { number: itemSelect.subMenu[0].type.number, display: itemSelect.display } })
+=======
+        this.$phoneAPI.callEvent(rep.eventName, rep.type)
+        this.$router.push({name: 'home'})
+>>>>>>> e0c28121a5540c72683e33db0da6c0191c695f14
       })
     }
   },

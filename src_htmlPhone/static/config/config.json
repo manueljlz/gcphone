@@ -125,6 +125,7 @@
     {
       "display": "Taxi",
       "backgroundColor": "yellow",
+<<<<<<< HEAD
       "icon": "https://t2.rbxcdn.com/f01c1711227721a71ca6b8da39a300f6",
       "subMenu": [{
         "title": "Send a message",
@@ -138,6 +139,8 @@
       "display": "Mechanic",
       "backgroundColor": "red",
       "icon": "https://i.pinimg.com/originals/cb/49/b8/cb49b8cbdf96d32e22e434f856649e5d.png",
+=======
+>>>>>>> e0c28121a5540c72683e33db0da6c0191c695f14
       "subMenu": [{
         "title": "Send a message",
         "eventName": "esx_addons_gcphone:call",

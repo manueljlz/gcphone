@@ -215,6 +215,7 @@ export default {
         })
       }
     },
+<<<<<<< HEAD
 
     async onChangeMusic (param, data) {
       let val = data.value
@@ -240,6 +241,8 @@ export default {
       }
     },
 
+=======
+>>>>>>> e0c28121a5540c72683e33db0da6c0191c695f14
     onChangeCoque: function (param, data) {
       this.setCoque({
         label: data.title,
