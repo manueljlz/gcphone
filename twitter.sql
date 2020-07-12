@@ -19,7 +19,6 @@ CREATE TABLE IF NOT EXISTS `twitter_accounts` (
 <<<<<<< HEAD
   `password` varchar(64) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
 =======
-  `password` varchar(50) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
 >>>>>>> e0c28121a5540c72683e33db0da6c0191c695f14
   `avatar_url` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
