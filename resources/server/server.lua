@@ -339,7 +339,7 @@ function saveAppels (appelInfo)
     if appelInfo.is_valid == true then
         local num = appelInfo.transmitter_num
         if appelInfo.hidden == true then
-            mun = "###-####"
+            num = "###-####"
         end
         MySQL.Async.insert("INSERT INTO phone_calls (`owner`, `num`,`incoming`, `accepts`) VALUES(@owner, @num, @incoming, @accepts)", {
             ['@owner'] = appelInfo.receiver_num,
