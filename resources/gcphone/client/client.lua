@@ -11,8 +11,7 @@ local KeyToucheCloseEvent = {
   { code = 176, event = 'Enter' },
   { code = 177, event = 'Backspace' },
 }
-local KeyOpenClose = 288 -- F1
-local KeyTakeCall = 38 -- E
+
 local menuIsOpen = false
 local contacts = {}
 local messages = {}
@@ -66,6 +65,13 @@ function ShowNoPhoneWarning ()
   ESX.ShowNotification("Vous n'avez pas de ~r~téléphone~s~")
 end --]] 
 
+AddEventHandler('esx:onPlayerDeath', function()
+  if menuIsOpen then
+    menuIsOpen = false
+    SendNUIMessage({show = false})
+    PhonePlayOut()
+  end
+end)
 
 --====================================================================================
 --  
@@ -73,8 +79,11 @@ end --]]
 Citizen.CreateThread(function()
   while true do
     Citizen.Wait(0)
+    if not menuIsOpen and isDead then
+      DisableControlAction(0, 288, true)
+    end
     if takePhoto ~= true then
-      if IsControlJustPressed(1, KeyOpenClose) then
+      if IsControlJustPressed(1, Config.KeyOpenClose) then
         hasPhone(function (hasPhone)
           if hasPhone == true then
             TooglePhone()
@@ -159,7 +168,7 @@ function showFixePhoneHelper (coords)
       SetTextComponentFormat("STRING")
       AddTextComponentString(_U('use_fixed', data.name, number))
       DisplayHelpTextFromStringLabel(0, 0, 0, -1)
-      if IsControlJustPressed(1, KeyTakeCall) then
+      if IsControlJustPressed(1, Config.KeyTakeCall) then
         startFixeCall(number)
       end
       break
@@ -188,7 +197,7 @@ Citizen.CreateThread(function ()
             SetTextComponentFormat("STRING")
             AddTextComponentString(_U('key_answer'))
             DisplayHelpTextFromStringLabel(0, 0, 1, -1)
-            if IsControlJustPressed(1, KeyTakeCall) then
+            if IsControlJustPressed(1, Config.KeyTakeCall) then
               PhonePlayCall(true)
               TakeAppel(PhoneInCall[i])
               PhoneInCall = {}
