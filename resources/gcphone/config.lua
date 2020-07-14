@@ -1,4 +1,4 @@
-Config              = {}
+Config = {}
 
 -- Script locale (only .Lua)
 Config.Locale = 'en'
