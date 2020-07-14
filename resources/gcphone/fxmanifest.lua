@@ -96,9 +96,13 @@ client_script {
 
 server_script {
 	'@mysql-async/lib/MySQL.lua',
+
+	'locales/en.lua',
+	'locales/es.lua',
+
 	"config.lua",
 	"server/server.lua",
 
 	"server/app_tchat.lua",
-	"server/twitter.lua"
+	"server/twitter.lua",
 }

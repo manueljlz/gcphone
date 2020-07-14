@@ -177,8 +177,8 @@
       "routeName": "appels",
       "inHomePage": true
     },
-   
-    
+
+
     {
       "name": "Contacts",
       "fr_FR__name": "Contacts",
@@ -216,7 +216,7 @@
       "routeName": "parametre",
       "inHomePage": false
     },
-    
+
     {
       "name": "Bank",
       "fr_FR__name": "Wallet",
@@ -270,7 +270,7 @@
       "es_ES__name": "Notas ",
       "routeName": "notes",
       "icons": "/html/static/img/icons_app/notes.png"
-      
+
     },
     {
       "name": "9GAG",
