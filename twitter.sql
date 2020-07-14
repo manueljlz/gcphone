@@ -20,7 +20,11 @@ CREATE TABLE IF NOT EXISTS `twitter_accounts` (
   `password` varchar(64) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
   `password` varchar(64) COLLATE utf8mb4_bin NOT NULL DEFAULT '0',
+=======
+>>>>>>> e0c28121a5540c72683e33db0da6c0191c695f14
+>>>>>>> 072bc07bd52686e08a099e26ce478efc0ad5281f
 =======
 >>>>>>> e0c28121a5540c72683e33db0da6c0191c695f14
 >>>>>>> 072bc07bd52686e08a099e26ce478efc0ad5281f
