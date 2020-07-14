@@ -713,20 +713,6 @@ RegisterNUICallback('setIgnoreFocus', function (data, cb)
   cb()
 end)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 RegisterNUICallback('takePhoto', function(data, cb)
 	CreateMobilePhone(1)
   CellCamActivate(true, true)
@@ -753,7 +739,7 @@ RegisterNUICallback('takePhoto', function(data, cb)
         local resp = json.decode(data)
         DestroyMobilePhone()
         CellCamActivate(false, false)
-        --cb(json.encode({ url = resp.files[1].url }))   
+        cb(json.encode({ url = resp.files[1].url }))
       end)
       takePhoto = false
 		end
