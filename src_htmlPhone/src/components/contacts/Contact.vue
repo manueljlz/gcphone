@@ -101,7 +101,7 @@ export default {
     },
     save () {
       if (this.id === -1 || this.id === 0) {
-        this.updateContact({
+        this.addContact({
           display: this.contact.display,
           number: this.contact.number
         })
