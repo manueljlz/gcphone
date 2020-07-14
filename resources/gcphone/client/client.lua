@@ -366,8 +366,12 @@ RegisterNetEvent("gcPhone:acceptCall")
 AddEventHandler("gcPhone:acceptCall", function(infoCall, initiator)
   if inCall == false and USE_RTC == false then
     inCall = true
-    NetworkSetVoiceChannel(infoCall.id + 1)
-    NetworkSetTalkerProximity(0.0)
+    if Config.UseMumbleVoIP then
+      exports["mumble-voip"]:SetCallChannel(infoCall.id+1)
+    else
+      NetworkSetVoiceChannel(infoCall.id + 1)
+      NetworkSetTalkerProximity(0.0)
+    end
   end
   if menuIsOpen == false then 
     TooglePhone()
@@ -380,8 +384,12 @@ RegisterNetEvent("gcPhone:rejectCall")
 AddEventHandler("gcPhone:rejectCall", function(infoCall)
   if inCall == true then
     inCall = false
-    Citizen.InvokeNative(0xE036A705F989E049)
-    NetworkSetTalkerProximity(2.5)
+    if Config.UseMumbleVoIP then
+      exports["mumble-voip"]:SetCallChannel(0)
+    else
+      Citizen.InvokeNative(0xE036A705F989E049)
+      NetworkSetTalkerProximity(2.5)
+    end
   end
   PhonePlayText()
   SendNUIMessage({event = 'rejectCall', infoCall = infoCall})

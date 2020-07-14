@@ -1,3 +1,5 @@
+Config              = {}
+
 -- Script locale (only .Lua)
 Config.Locale = 'en'
 
@@ -13,5 +15,7 @@ Config.FixePhone = {
     coords = { x = 372.25, y = -965.75, z = 28.58 } 
   },
 }
+
+Config.UseMumbleVoIP = false -- Use Frazzle's Mumble-VoIP Resource (Recomended!) https://github.com/FrazzIe/mumble-voip
 
 Config.ShowNumberNotification = false -- Show Number or Contact Name when you receive new SMS
