@@ -23,7 +23,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - name: Go to directory
-          working-directory: ./src_htmlPhone
+      - working-directory: ./src_htmlPhone
       - run: npm install
       - run: npm run build
