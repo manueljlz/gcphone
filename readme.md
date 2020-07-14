@@ -1,6 +1,4 @@
-### [Downloads page](https://github.com/manueljlz/gcphone)
-
-<h2 align="center">Teléfono para FiveM v3</h2>
+<h2 align="center">Custom GCPhone v3</h2>
 
 ![Image of gcphone1](https://imgur.com/a2ltY4l.png)
 ![Image of gcphone2](https://imgur.com/HsRSwRk.png)
@@ -29,20 +27,15 @@
 
 ## Instructions for use
 
-  - To put the gcphone to work on your server you must follow these steps
+  - 1º Copy all the files from the resources folder and add them to the folder called GCPhone on your server
 
-  - 1º Copy all the files from the resources folder and add them to the folder called gcphone on your server
 
-  - 2º For the bank application to work, you need the script on your NewBanking server, since it uses this script
-
-  - 3º In order to make use of sending messages to public services, you must have the following script on your server and configure it for operation
-
-  - 4º If once the gcphone is inserted, it does not load the images, try to delete the cache of the server and your FiveM and it will be ready for operation
-
+## Troubleshooting
+  - If the script doesn't load the images, try to delete the cache of the server and your FiveM and it will be ready for operation
 ## Requirements
 
-  - Official website esx_addons_gcphone -> https://github.com/N3MTV/gcphone/tree/master/resources/esx_addons_gcphone
-  - Official website new_banking -> https://github.com/NewWayRP/new_banking
+  - Official website esx_addons_gcphone -> https://github.com/N3MTV/gcphone/tree/master/resources/esx_addons_gcphone (To make use of sending messages to public services)
+  - Official website new_banking -> https://github.com/NewWayRP/new_banking (For the bank application to work)
 
 ## Credits
 
@@ -60,4 +53,6 @@
 
 [GNU v3](https://opensource.org/licenses/gpl-3.0.html)
 
-Manuel (ElBichop) 
+[Jonathan (Gannon) D](https://github.com/N3MTV)
+
+[Manuel (ElBichop)](https://github.com/manueljlz)
