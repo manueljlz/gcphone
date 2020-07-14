@@ -9,8 +9,8 @@
     <textarea ref="copyTextarea" class="copyTextarea"/>
     
     
-    <div style="width: 326px; height: 678px; backgroundColor: white"  id='sms_list' @contextmenu.prevent="showOptions">
-        <div class="sms" v-bind:class="{ select: key === selectMessage}" v-for='(mess, key) in messagesList' v-bind:key="mess.id" @click.stop="onActionMessage(mess)"
+    <div style="width: 326px; height: 678px; backgroundColor: white"  id='sms_list' @contextmenu.prevent.stop="showOptions">
+        <div class="sms" v-bind:class="{ select: key === selectMessage}" v-for='(mess, key) in messagesList' v-bind:key="mess.id" @click.stop="onActionMessage(mess)" @contextmenu.prevent.stop="showOptions"
         >
           <div class="sms_message_time">
               <h6  v-bind:class="{ sms_me : mess.owner === 1}"  class="name_other_sms_me">{{displayContact}}</h6>
