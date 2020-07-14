@@ -84,10 +84,12 @@ files {
 }
 
 client_script {
+	"@es_extended/locale.lua",
+	"locales/en.lua",
+	"locales/es.lua",
 	"config.lua",
 	"client/animation.lua",
 	"client/client.lua",
-
 	"client/photo.lua",
 	"client/app_tchat.lua",
 	"client/bank.lua",
@@ -95,14 +97,12 @@ client_script {
 }
 
 server_script {
-	'@mysql-async/lib/MySQL.lua',
-
-	'locales/en.lua',
-	'locales/es.lua',
-
+	"@mysql-async/lib/MySQL.lua",
+	"@es_extended/locale.lua",
+	"locales/en.lua",
+	"locales/es.lua",
 	"config.lua",
 	"server/server.lua",
-
 	"server/app_tchat.lua",
 	"server/twitter.lua",
 }
