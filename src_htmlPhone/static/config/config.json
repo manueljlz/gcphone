@@ -55,6 +55,7 @@
     "Tokio neon": "tokio.jpg",
     "Custom URL": "URL"
   },
+
   "background_default": {
     "label": "Santa Mónica Beach",
     "value": "back003.jpg"
@@ -71,7 +72,7 @@
   },
 
   "sonido": {
-    "Astronomia": "ring.ogg",
+    "Astronomia": "ring2.ogg",
     "Safaera": "safaera.ogg",
     "Bella Ciao": "bella_ciao.ogg",
     "Casa Papel": "casa_papel.ogg",
@@ -86,8 +87,8 @@
   },
 
   "sonido_default": {
-    "label": "Casa Papel",
-    "value": "casa_papel.ogg"
+    "label": "Astronomia",
+    "value": "ring2.ogg"
   },
 
 
