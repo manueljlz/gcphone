@@ -39,10 +39,10 @@
 
 ## Credits
 
-  - ElBichop (Creador) @GuidesJaen
-  - Mureno (Colaborador) @murenooo
-  - Paty Blue (Diseñadora gráfica) @psasfer
-  - Sanlaris (Colaboradora) @Sanlaris_game
+  - Manuel Jiménez López (ElBichop) / Owner / FullStack
+  - Franco Sanllehi / Backend programmer
+  - Paty Blue / graphic designer / @psasfer
+  - 
 
   - Original GCPhone by Gannon https://github.com/N3MTV/gcphone
 
