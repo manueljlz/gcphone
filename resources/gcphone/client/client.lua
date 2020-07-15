@@ -46,15 +46,17 @@ end
   Ouverture du téphone lié a un item
   Un solution ESC basé sur la solution donnée par HalCroves
   https://forum.fivem.net/t/tutorial-for-gcphone-with-call-and-job-message-other/177904
+]]--
 
 ESX = nil
+
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Citizen.Wait(0)
+    Citizen.Wait(0)
   end
 end)
-
+--[[
 function hasPhone (cb)
   if (ESX == nil) then return cb(0) end
   ESX.TriggerServerCallback('gcphone:getItemAmount', function(qtty)
@@ -660,7 +662,7 @@ end)
 AddEventHandler('onClientResourceStart', function(res)
   DoScreenFadeIn(300)
   if res == "gcphone" then
-      TriggerServerEvent('gcPhone:allUpdate')
+    TriggerServerEvent('gcPhone:allUpdate')
   end
 end)
 
