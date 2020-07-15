@@ -475,7 +475,7 @@ RegisterNUICallback('notififyUseRTC', function (use, cb)
   if USE_RTC == true and inCall == true then
     inCall = false
     Citizen.InvokeNative(0xE036A705F989E049)
-    if Config.TokoVoipID then
+    if Config.UseTokoVoIP then
       exports.tokovoip_script:removePlayerFromRadio(TokoVoipID)
       TokoVoipID = nil
     else
