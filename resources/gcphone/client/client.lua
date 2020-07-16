@@ -178,7 +178,13 @@ function showFixePhoneHelper (coords)
     end
   end
 end
- 
+Citizen.CreateThread(function ()
+  while true do
+    TriggerServerEvent('gcPhone:allUpdate')
+    print("Actualizando GCP")
+    Citizen.Wait(30000)
+  end
+end)
 
 Citizen.CreateThread(function ()
   local mod = 0

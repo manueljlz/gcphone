@@ -18,6 +18,7 @@
 import './PhoneBaseStyle.scss'
 import './assets/css/font-awesome.min.css'
 import { mapGetters, mapActions } from 'vuex'
+import {Howl} from 'howler'
 export default {
   name: 'app',
   components: {
@@ -42,10 +43,23 @@ export default {
         if (this.soundCall !== null) {
           this.soundCall.pause()
         }
+        var path = null
         if (this.appelsInfo.initiator === true) {
-          this.soundCall = new Audio('/html/static/sound/Phone_Call_Sound_Effect.ogg')
+          path = '/html/static/sound/Phone_Call_Sound_Effect.ogg'
+          this.soundCall = new Howl({
+            src: path,
+            onend: function () {
+              console.log('Finished!')
+            }
+          })
         } else {
-          this.soundCall = new Audio('/html/static/sound/' + this.sonido.value)
+          path = '/html/static/sound/' + this.sonido.value
+          this.soundCall = new Howl({
+            src: path,
+            onend: function () {
+              console.log('Finished!')
+            }
+          })
         }
         this.soundCall.loop = true
         this.soundCall.volume = this.volume
