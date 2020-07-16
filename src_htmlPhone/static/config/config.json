@@ -450,6 +450,10 @@
       "APP_MESSAGE_CONTACT_TITLE": "contacts",
       "APP_MESSAGE_CONTRACT_ENTER_NUMBER": "Enter a number",
       "APP_MESSAGE_PLACEHOLDER_ENTER_MESSAGE": "Send a message",
+      "APP_MESSAGE_MESS_SMS": "SMS",
+      "APP_MESSAGE_MESS_CALL": "Call",
+      "APP_MESSAGE_MESS_COPY": "Copy",
+      "APP_MESSAGE_SEND_PHOTO": "Send a photo",
       "APP_DARKTCHAT_TITLE": "Reddit",
       "APP_DARKTCHAT_NEW_CHANNEL": "Add a channel",
       "APP_DARKTCHAT_DELETE_CHANNEL": "Delete the channel",
@@ -848,6 +852,9 @@
       "APP_BANK_TITLE_ENTER_MONEY": "Número de cuenta",
       "APP_BANK_BUTTON_TRANSFER": "Transferencia",
       "APP_BANK_BUTTON_CANCEL": "Cancelar",
+      "APP_MESSAGE_MESS_SMS": "SMS",
+      "APP_MESSAGE_MESS_CALL": "Llamar",
+      "APP_MESSAGE_MESS_COPY": "Copiar",
 
       "TIMEAGO": [
         "ahora",

@@ -19,7 +19,7 @@
   - Reddit app
   - Bag Application
   - Notes application
-  - Selection of ringtones
+  - Selection of ringtones (WORKING!)
   - Fixed bug numeric keyboard script
   - Added different cases for iphone 11
   - Added new background images
@@ -42,8 +42,6 @@
   - Manuel Jiménez López (ElBichop) / Owner / FullStack
   - Franco Sanllehi / Backend programmer
   - Paty Blue / graphic designer / @psasfer
-  - 
-
   - Original GCPhone by Gannon https://github.com/N3MTV/gcphone
 
 
