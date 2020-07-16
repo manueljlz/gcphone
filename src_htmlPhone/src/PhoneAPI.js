@@ -1,6 +1,7 @@
 import store from '@/store'
 import VoiceRTC from './VoiceRCT'
 import Vue from 'vue'
+import {Howl} from 'howler'
 
 import emoji from './emoji.json'
 const keyEmoji = Object.keys(emoji)
@@ -328,11 +329,17 @@ class PhoneAPI {
   }
 
   onplaySound ({ sound, volume = 1 }) {
+    var path = '/html/static/sound/' + sound
     if (!sound) return
     if (this.soundList[sound] !== undefined) {
       this.soundList[sound].volume = volume
     } else {
-      this.soundList[sound] = new Audio('/html/static/sound/' + sound)
+      this.soundList[sound] = new Howl({
+        src: path,
+        onend: function () {
+          console.log('Finished!')
+        }
+      })
       this.soundList[sound].loop = true
       this.soundList[sound].volume = volume
       this.soundList[sound].play()
