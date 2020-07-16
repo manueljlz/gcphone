@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "babel-preset-es2017": "^6.24.1",
+    "howler": "^2.2.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^6.0.7",
     "vue": "^2.5.16",
