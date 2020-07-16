@@ -11,6 +11,8 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "@sentry/browser": "^5.19.2",
+    "@sentry/integrations": "^5.19.2",
     "babel-preset-es2017": "^6.24.1",
     "howler": "^2.2.0",
     "node-sass": "^4.9.0",

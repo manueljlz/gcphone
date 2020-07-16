@@ -25,6 +25,9 @@
 
   "useFormatNumberFrance": true,
 
+  "/Sentry/": "Enabling this option can help us to discover new bugs and solve them ASAP! (We beg you to keep this enabled, so we can help us each other as a community)",
+  "useSentryErroTracking": true,
+
   "useWebRTCVocal": false,
   "RTCConfig": {
     "iceServers": [{
