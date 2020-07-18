@@ -76,6 +76,9 @@ AddEventHandler('esx:onPlayerDeath', function()
   end
 end)
 
+AddEventHandler('esx:playerLoaded', function()
+  TriggerServerEvent('gcPhone:allUpdate')
+end)
 --====================================================================================
 --  
 --====================================================================================
@@ -178,12 +181,6 @@ function showFixePhoneHelper (coords)
     end
   end
 end
-Citizen.CreateThread(function ()
-  while true do
-    TriggerServerEvent('gcPhone:allUpdate')
-    Citizen.Wait(120000)
-  end
-end)
 
 Citizen.CreateThread(function ()
   local mod = 0
@@ -667,6 +664,9 @@ end)
 AddEventHandler('onClientResourceStart', function(res)
   DoScreenFadeIn(300)
   if res == "gcphone" then
+    TriggerServerEvent('gcPhone:allUpdate')
+    -- Try again in 2 minutes (Recovers bugged phone numbers)
+    Citizen.Wait(120000)
     TriggerServerEvent('gcPhone:allUpdate')
   end
 end)

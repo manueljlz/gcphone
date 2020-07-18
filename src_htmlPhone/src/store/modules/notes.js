@@ -1,5 +1,6 @@
 import PhoneAPI from './../../PhoneAPI'
 const LOCAL_NAME = 'gc_notes_channels'
+import {Howl} from 'howler'
 
 let NotesAudio = null
 
@@ -35,8 +36,10 @@ const actions = {
         NotesAudio.pause()
         NotesAudio = null
       }
-      NotesAudio = new Audio('/html/static/sound/tchatNotification.ogg')
-      NotesAudio.volume = getters.volume
+      NotesAudio = new Howl({
+        src: '/html/static/sound/tchatNotification.ogg',
+        volume: getters.volume
+      })
       NotesAudio.play()
     }
     commit('NOTES_ADD_MESSAGES', { message })

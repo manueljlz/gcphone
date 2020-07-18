@@ -16,6 +16,7 @@
 
 <script>
 import events from './events'
+import {Howl} from 'howler'
 
 export default {
   data () {
@@ -39,9 +40,12 @@ export default {
         this.destroy(dataNotif.id)
       }, dataNotif.duration)
       if (event.sound !== null && event.sound !== undefined) {
-        const audio = new Audio('/html/static/sound/' + event.sound)
-        audio.addEventListener('ended', () => {
-          audio.src = null
+        var path = '/html/static/sound/' + event.sound
+        const audio = new Howl({
+          src: path,
+          onend: function () {
+            audio.src = null
+          }
         })
         audio.play()
       }

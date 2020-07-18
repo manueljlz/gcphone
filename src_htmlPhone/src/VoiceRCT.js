@@ -1,3 +1,4 @@
+import {Howl} from 'howler'
 const constraints = {
   video: false,
   audio: true
@@ -11,7 +12,7 @@ class VoiceRTC {
     this.candidates = []
     this.listener = {}
     this.myCandidates = []
-    this.audio = new Audio()
+    this.audio = new Howl()
     this.offer = null
     this.answer = null
     this.initiator = null
@@ -78,7 +79,7 @@ class VoiceRTC {
   onicecandidate (event) {
     if (event.candidate !== undefined) {
       this.myCandidates.push(event.candidate)
-      if (this.listener['onCandidate'] !== undefined) { 
+      if (this.listener['onCandidate'] !== undefined) {
         const candidates = this.getAvailableCandidates()
         for (let func of this.listener['onCandidate']) {
           func(candidates)
@@ -115,7 +116,7 @@ class VoiceRTC {
   }
 
   onaddstream (event) {
-    this.audio.srcObject = event.stream
+    this.audio.src = event.stream
     this.audio.play()
   }
 
