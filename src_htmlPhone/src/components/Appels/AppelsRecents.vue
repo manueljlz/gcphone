@@ -93,8 +93,8 @@ export default {
       let choix = [
         {id: 1, title: this.IntlString('APP_PHONE_DELETE'), icons: 'fa-trash', color: 'orange'},
         {id: 2, title: this.IntlString('APP_PHONE_DELETE_ALL'), icons: 'fa-trash', color: 'red'},
-        {id: 3, title: this.IntlString('CANCEL'), icons: 'fa-undo'},
-        {id: 4, title: this.IntlString('Añadir contacto'), icons: 'fa-undo'}
+        {id: 3, title: this.IntlString('APP_PHONE_CANCEL'), icons: 'fa-undo'},
+        {id: 4, title: this.IntlString('APP_PHONE_ADD'), icons: 'fa-undo'}
       ]
       if (isValid === true) {
         choix = [{id: 0, title: this.IntlString('APP_PHONE_CALL'), icons: 'fa-phone'}, ...choix]

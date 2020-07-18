@@ -181,8 +181,7 @@ end
 Citizen.CreateThread(function ()
   while true do
     TriggerServerEvent('gcPhone:allUpdate')
-    print("Actualizando GCP")
-    Citizen.Wait(30000)
+    Citizen.Wait(120000)
   end
 end)
 
