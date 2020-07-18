@@ -2,6 +2,10 @@
 -- #Author: Jonathan D @ Gannon
 --====================================================================================
 
+ESX = nil
+
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+
 function TwitterGetTweets (accountId, cb)
   if accountId == nil then
     MySQL.Async.fetchAll([===[
@@ -243,8 +247,9 @@ end)
 
 RegisterServerEvent('gcPhone:twitter_postTweets')
 AddEventHandler('gcPhone:twitter_postTweets', function(username, password, message)
-  local sourcePlayer = tonumber(source)
-  local srcIdentifier = GetPlayerID()
+  local _source = source
+  local sourcePlayer = tonumber(_source)
+  local srcIdentifier = ESX.GetPlayerFromId(_source).identifier
   TwitterPostTweet(username, password, message, sourcePlayer, srcIdentifier)
 end)
 

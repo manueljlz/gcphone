@@ -2,15 +2,15 @@
   <div style="width: 314px; height: 577px;" class='phone_content content inputText'>
     <template v-if="state === STATES.MENU">
       <template v-if="!isLogin">
-        <div class="group" data-type="button" @click.stop="state = STATES.LOGIN">      
+        <div class="group" data-type="button" @click.stop="state = STATES.LOGIN">
           <input type='button' class="btn btn-blue" @click.stop="state = STATES.LOGIN" :value="IntlString('APP_TWITTER_ACCOUNT_LOGIN')"/>
         </div>
 
-        <div class="group" data-type="button" @click.stop="state = STATES.NOTIFICATION">      
+        <div class="group" data-type="button" @click.stop="state = STATES.NOTIFICATION">
           <input type='button' class="btn btn-blue" @click.stop="state = STATES.NOTIFICATION" :value="IntlString('APP_TWITTER_NOTIFICATION')" />
         </div>
 
-        <div class="group bottom" data-type="button" @click.stop="state = STATES.NEW_ACCOUNT">      
+        <div class="group bottom" data-type="button" @click.stop="state = STATES.NEW_ACCOUNT">
           <input type='button' class="btn btn-red" @click.stop="state = STATES.NEW_ACCOUNT" :value="IntlString('APP_TWITTER_ACCOUNT_NEW')" />
         </div>
       </template>
@@ -18,36 +18,36 @@
       <template v-if="isLogin">
         <img :src="twitterAvatarUrl" height="128" width="128" style="align-self: center;">
 
-        <div class="group" data-type="button" @click.stop="state = STATES.ACCOUNT">      
+        <div class="group" data-type="button" @click.stop="state = STATES.ACCOUNT">
           <input type='button' class="btn btn-blue" @click.stop="state = STATES.ACCOUNT" :value="IntlString('APP_TWITTER_ACCOUNT_PARAM')" />
         </div>
 
-        <div class="group" data-type="button" @click.stop="state = STATES.NOTIFICATION">      
+        <div class="group" data-type="button" @click.stop="state = STATES.NOTIFICATION">
           <input type='button' class="btn btn-blue" @click.stop="state = STATES.NOTIFICATION" :value="IntlString('APP_TWITTER_NOTIFICATION')" />
         </div>
 
-        <div class="group bottom" data-type="button" @click.stop="logout">      
+        <div class="group bottom" data-type="button" @click.stop="logout">
           <input type='button' class="btn btn-red" @click.stop="logout" :value="IntlString('APP_TWITTER_ACCOUNT_LOGOUT')" />
         </div>
       </template>
     </template>
 
     <template v-else-if="state === STATES.LOGIN">
-      <div class="group inputText" data-type="text" data-maxlength='64' :data-defaultValue="localAccount.username">      
+      <div class="group inputText" data-type="text" data-maxlength='64' :data-defaultValue="localAccount.username">
           <input type="text" :value="localAccount.username" @change="setLocalAccount($event, 'username')">
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>{{ IntlString('APP_TWITTER_ACCOUNT_USERNAME') }}</label>
       </div>
-      
-      <div class="group inputText" data-type="text" data-model='password' data-maxlength='30'>      
+
+      <div class="group inputText" data-type="text" data-model='password' data-maxlength='30'>
           <input autocomplete="new-password" type="password" :value="localAccount.password" @change="setLocalAccount($event, 'password')">
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>{{ IntlString('APP_TWITTER_ACCOUNT_PASSWORD') }}</label>
       </div>
 
-      <div class="group" data-type="button" @click.stop="login">      
+      <div class="group" data-type="button" @click.stop="login">
         <input type='button' class="btn btn-blue" @click.stop="login" :value="IntlString('APP_TWITTER_ACCOUNT_LOGIN')" />
       </div>
     </template>
@@ -61,7 +61,7 @@
         <input type="checkbox" :checked="twitterNotification === 2" @click.prevent.stop="setNotification(2)">
         {{ IntlString('APP_TWITTER_NOTIFICATION_ALL') }}
       </label>
-  
+
       <label class="group checkbox" data-type="button" @click.prevent.stop="setNotification(1)">
         <input type="checkbox" :checked="twitterNotification === 1" @click.prevent.stop="setNotification(1)">
         {{ IntlString('APP_TWITTER_NOTIFICATION_MENTION') }}
@@ -80,7 +80,7 @@
         <input type="checkbox" :checked="twitterNotificationSound" @click.prevent.stop="setNotificationSound(true)">
         {{ IntlString('APP_TWITTER_NOTIFICATION_SOUND_YES') }}
       </label>
-  
+
       <label class="group checkbox" data-type="button" @click.prevent.stop="setNotificationSound(false)">
         <input type="checkbox" :checked="!twitterNotificationSound" @click.prevent.stop="setNotificationSound(false)">
         {{ IntlString('APP_TWITTER_NOTIFICATION_SOUND_NO') }}
@@ -90,47 +90,47 @@
 
     <template v-else-if="state === STATES.ACCOUNT">
 
-      <div style="margin-top: 42px; margin-bottom: 42px;" class="group img" data-type="button" @click.stop="onPressChangeAvartar">      
+      <div style="margin-top: 42px; margin-bottom: 42px;" class="group img" data-type="button" @click.stop="onPressChangeAvartar">
         <img :src="twitterAvatarUrl" height="128" width="128" @click.stop="onPressChangeAvartar">
         <input type='button' class="btn btn-blue" :value="IntlString('APP_TWITTER_ACCOUNT_AVATAR')" @click.stop="onPressChangeAvartar" />
       </div>
 
-      <div class="group" data-type="button" @click.stop="changePassword">      
+      <div class="group" data-type="button" @click.stop="changePassword">
         <input type='button' class="btn btn-red" :value="IntlString('APP_TWITTER_ACCOUNT_CHANGE_PASSWORD')" @click.stop="changePassword"/>
       </div>
 
     </template>
 
     <template v-else-if="state === STATES.NEW_ACCOUNT">
-  
-      <div class="group inputText" data-type="text" data-maxlength='64' data-defaultValue="">      
+
+      <div class="group inputText" data-type="text" data-maxlength='64' data-defaultValue="">
           <input type="text" :value="localAccount.username" @change="setLocalAccount($event, 'username')">
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>{{ IntlString('APP_TWITTER_NEW_ACCOUNT_USERNAME') }}</label>
       </div>
-      
-      <div class="group inputText" data-type="text" data-model='password' data-maxlength='30'>      
+
+      <div class="group inputText" data-type="text" data-model='password' data-maxlength='30'>
           <input autocomplete="new-password" type="password" :value="localAccount.password" @change="setLocalAccount($event, 'password')">
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>{{ IntlString('APP_TWITTER_NEW_ACCOUNT_PASSWORD') }}</label>
       </div>
-     
 
-      <div class="group inputText" data-type="text" data-model='password' data-maxlength='30'>      
+
+      <div class="group inputText" data-type="text" data-model='password' data-maxlength='30'>
           <input autocomplete="new-password" type="password" :value="localAccount.passwordConfirm" @change="setLocalAccount($event, 'passwordConfirm')">
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>{{ IntlString('APP_TWITTER_NEW_ACCOUNT_PASSWORD_CONFIRM') }}</label>
       </div>
-      
-      <div style="margin-top: 42px; margin-bottom: 42px;" class="group img" data-type="button" @click.stop="setLocalAccountAvartar($event)">      
+
+      <div style="margin-top: 42px; margin-bottom: 42px;" class="group img" data-type="button" @click.stop="setLocalAccountAvartar($event)">
         <img :src="localAccount.avatarUrl" height="128" width="128" @click.stop="setLocalAccountAvartar($event)">
         <input type='button' class="btn btn-blue" :value="IntlString('APP_TWITTER_NEW_ACCOUNT_AVATAR')" @click.stop="setLocalAccountAvartar($event)"/>
       </div>
 
-      <div class="group" data-type="button" @click.stop="createAccount">      
+      <div class="group" data-type="button" @click.stop="createAccount">
         <input type='button' class="btn" :class="validAccount ? 'btn-blue' : 'btn-gray'" :value="IntlString('APP_TWIITER_ACCOUNT_CREATE')" @click.stop="createAccount"/>
       </div>
     </template>
@@ -160,7 +160,7 @@ export default {
         username: '',
         password: '',
         passwordConfirm: '',
-        avatarUrl: null
+        avatarUrl: '/html/static/img/twitter/default_profile.png'
       },
       notification: 0,
       notificationSound: false
@@ -360,13 +360,13 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.group { 
-  position:relative; 
-  margin-top:24px; 
+.group {
+  position:relative;
+  margin-top:24px;
 }
-.group.inputText { 
-  position:relative; 
-  margin-top:45px; 
+.group.inputText {
+  position:relative;
+  margin-top:45px;
 }
 
 .group.bottom {
@@ -398,15 +398,15 @@ input:focus 		{ outline:none; }
 
 /* LABEL ======================================= */
 .group.inputText label 				 {
-  color:#999; 
+  color:#999;
   font-size:18px;
   font-weight:normal;
   position:absolute;
   pointer-events:none;
   left:5px;
   top:10px;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
   -webkit-transition:0.2s ease all;
 }
 
@@ -468,20 +468,20 @@ input:focus 		{ outline:none; }
 .bar 	{ position:relative; display:block; width:100%; }
 .bar:before, .bar:after 	{
   content:'';
-  height:2px; 
+  height:2px;
   width:0;
-  bottom:1px; 
+  bottom:1px;
   position:absolute;
-  background:#007aff; 
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
+  background:#007aff;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
   -webkit-transition:0.2s ease all;
 }
 .bar:before {
   left:50%;
 }
 .bar:after {
-  right:50%; 
+  right:50%;
 }
 
 /* active state */
@@ -493,9 +493,9 @@ input:focus ~ .bar:before, input:focus ~ .bar:after,
 /* HIGHLIGHTER ================================== */
 .highlight {
   position:absolute;
-  height:60%; 
-  width:100px; 
-  top:25%; 
+  height:60%;
+  width:100px;
+  top:25%;
   left:0;
   pointer-events:none;
   opacity:0.5;
