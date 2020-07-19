@@ -12,7 +12,7 @@ class VoiceRTC {
     this.candidates = []
     this.listener = {}
     this.myCandidates = []
-    this.audio = new Howl()
+    this.audio = new Howl({})
     this.offer = null
     this.answer = null
     this.initiator = null
