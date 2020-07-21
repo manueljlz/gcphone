@@ -12,7 +12,7 @@ class VoiceRTC {
     this.candidates = []
     this.listener = {}
     this.myCandidates = []
-    this.audio = new Howl({})
+    this.audio = new Audio()
     this.offer = null
     this.answer = null
     this.initiator = null
@@ -115,8 +115,8 @@ class VoiceRTC {
     }
   }
 
-  onaddstream (event) {
-    this.audio.src = event.stream
+  onaddstream(event) {
+    this.audio.srcObject = event.stream
     this.audio.play()
   }
 
