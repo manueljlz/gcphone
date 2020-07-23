@@ -376,6 +376,12 @@ AddEventHandler('gcPhone:getHistoriqueCall', function()
     sendHistoriqueCall(sourcePlayer, num)
 end)
 
+RegisterServerEvent('gcPhone:register_FixePhone')
+AddEventHandler('gcPhone:register_FixePhone', function(phone_number, coords)
+	Config.FixePhone[phone_number] = {name = _U('phone_booth'), coords = {x = coords.x, y = coords.y, z = coords.z}}
+	TriggerClientEvent('gcPhone:register_FixePhone', -1, phone_number, Config.FixePhone[phone_number])
+end)
+
 RegisterServerEvent('gcPhone:internal_startCall')
 AddEventHandler('gcPhone:internal_startCall', function(source, phone_number, rtcOffer, extraData)
     if Config.FixePhone[phone_number] ~= nil then
@@ -669,9 +675,9 @@ function onAcceptFixePhone(source, infoCall, rtcAnswer)
         PhoneFixeInfo[id] = nil
         TriggerClientEvent('gcPhone:notifyFixePhoneChange', -1, PhoneFixeInfo)
         TriggerClientEvent('gcPhone:acceptCall', AppelsEnCours[id].transmitter_src, AppelsEnCours[id], true)
-	SetTimeout(1000, function() -- change to +1000, if necessary.
-       	TriggerClientEvent('gcPhone:acceptCall', AppelsEnCours[id].receiver_src, AppelsEnCours[id], false)
-	end)
+        SetTimeout(1000, function() -- change to +1000, if necessary.
+            TriggerClientEvent('gcPhone:acceptCall', AppelsEnCours[id].receiver_src, AppelsEnCours[id], false)
+        end)
         saveAppels(AppelsEnCours[id])
     end
 end

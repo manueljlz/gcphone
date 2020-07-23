@@ -51,8 +51,8 @@ end
 ESX = nil
 
 Citizen.CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+  while ESX == nil do
+    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
     Citizen.Wait(0)
   end
 end)
@@ -170,7 +170,7 @@ function showFixePhoneHelper (coords)
     local dist = GetDistanceBetweenCoords(
       data.coords.x, data.coords.y, data.coords.z,
       coords.x, coords.y, coords.z, 1)
-    if dist <= 2.0 then
+    if dist <= 2.5 then
       SetTextComponentFormat("STRING")
       AddTextComponentString(_U('use_fixed', data.name, number))
       DisplayHelpTextFromStringLabel(0, 0, 0, -1)
@@ -181,6 +181,31 @@ function showFixePhoneHelper (coords)
     end
   end
 end
+
+RegisterNetEvent('gcPhone:register_FixePhone')
+AddEventHandler('gcPhone:register_FixePhone', function(phone_number, data)
+  Config.FixePhone[phone_number] = data
+end)
+
+local registeredPhones = {}
+Citizen.CreateThread(function()
+  if not Config.AutoFindFixePhones then return end
+  while not ESX do Citizen.Wait(0) end
+  while true do
+    local playerPed = GetPlayerPed(-1)
+    local coords = GetEntityCoords(playerPed)
+    for _, key in pairs({'p_phonebox_01b_s', 'p_phonebox_02_s', 'prop_phonebox_01a', 'prop_phonebox_01b', 'prop_phonebox_01c', 'prop_phonebox_02', 'prop_phonebox_03', 'prop_phonebox_04'}) do
+      local closestPhone = GetClosestObjectOfType(coords.x, coords.y, coords.z, 25.0, key, false)
+      if closestPhone ~= 0 and not registeredPhones[closestPhone] then
+        local phoneCoords = GetEntityCoords(closestPhone)
+        number = ('%.3s-%.4s'):format(math.abs(phoneCoords.x*1000), math.abs(phoneCoords.y * 1000))
+        TriggerServerEvent('gcPhone:register_FixePhone', number, phoneCoords)
+        registeredPhones[closestPhone] = true
+      end
+    end
+    Citizen.Wait(1000)
+  end
+end)
 
 Citizen.CreateThread(function ()
   local mod = 0
@@ -678,7 +703,7 @@ RegisterNUICallback('setIgnoreFocus', function (data, cb)
 end)
 
 RegisterNUICallback('takePhoto', function(data, cb)
-	CreateMobilePhone(1)
+  CreateMobilePhone(1)
   CellCamActivate(true, true)
   takePhoto = true
   Citizen.Wait(0)
@@ -686,12 +711,12 @@ RegisterNUICallback('takePhoto', function(data, cb)
     SetNuiFocus(false, false)
     hasFocus = false
   end
-	while takePhoto do
+  while takePhoto do
     Citizen.Wait(0)
 
-		if IsControlJustPressed(1, 27) then -- Toogle Mode
-			frontCam = not frontCam
-			CellFrontCamActivate(frontCam)
+    if IsControlJustPressed(1, 27) then -- Toogle Mode
+      frontCam = not frontCam
+      CellFrontCamActivate(frontCam)
     elseif IsControlJustPressed(1, 177) then -- CANCEL
       DestroyMobilePhone()
       CellCamActivate(false, false)
@@ -699,19 +724,19 @@ RegisterNUICallback('takePhoto', function(data, cb)
       takePhoto = false
       break
     elseif IsControlJustPressed(1, 176) then -- TAKE.. PIC
-			exports['screenshot-basic']:requestScreenshotUpload(data.url, data.field, function(data)
+      exports['screenshot-basic']:requestScreenshotUpload(data.url, data.field, function(data)
         local resp = json.decode(data)
         DestroyMobilePhone()
         CellCamActivate(false, false)
         cb(json.encode({ url = resp.files[1].url }))
       end)
       takePhoto = false
-		end
-		HideHudComponentThisFrame(7)
-		HideHudComponentThisFrame(8)
-		HideHudComponentThisFrame(9)
-		HideHudComponentThisFrame(6)
-		HideHudComponentThisFrame(19)
+    end
+    HideHudComponentThisFrame(7)
+    HideHudComponentThisFrame(8)
+    HideHudComponentThisFrame(9)
+    HideHudComponentThisFrame(6)
+    HideHudComponentThisFrame(19)
     HideHudAndRadarThisFrame()
   end
   Citizen.Wait(1000)
