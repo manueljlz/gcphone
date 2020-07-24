@@ -198,7 +198,7 @@ Citizen.CreateThread(function()
       local closestPhone = GetClosestObjectOfType(coords.x, coords.y, coords.z, 25.0, key, false)
       if closestPhone ~= 0 and not registeredPhones[closestPhone] then
         local phoneCoords = GetEntityCoords(closestPhone)
-        number = ('%.3s-%.4s'):format(math.abs(phoneCoords.x*1000), math.abs(phoneCoords.y * 1000))
+        number = ('0%.2s-%.2s%.2s'):format(math.abs(phoneCoords.x*100), math.abs(phoneCoords.y * 100), math.abs(phoneCoords.z *100))
         if not Config.FixePhone[number] then
           TriggerServerEvent('gcPhone:register_FixePhone', number, phoneCoords)
         end
