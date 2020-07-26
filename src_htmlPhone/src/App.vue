@@ -48,6 +48,8 @@ export default {
           path = '/html/static/sound/Phone_Call_Sound_Effect.ogg'
           this.soundCall = new Howl({
             src: path,
+            volume: this.volume,
+            loop: true,
             onend: function () {
               console.log('Finished!')
             }
@@ -56,13 +58,13 @@ export default {
           path = '/html/static/sound/' + this.sonido.value
           this.soundCall = new Howl({
             src: path,
+            volume: this.volume,
+            loop: true,
             onend: function () {
               console.log('Finished!')
             }
           })
         }
-        this.soundCall.loop = true
-        this.soundCall.volume = this.volume
         this.soundCall.play()
       } else if (this.soundCall !== null) {
         this.soundCall.pause()

@@ -336,12 +336,12 @@ class PhoneAPI {
     } else {
       this.soundList[sound] = new Howl({
         src: path,
+        volume: volume,
+        loop: true,
         onend: function () {
           console.log('Finished!')
         }
       })
-      this.soundList[sound].loop = true
-      this.soundList[sound].volume = volume
       this.soundList[sound].play()
     }
   }
