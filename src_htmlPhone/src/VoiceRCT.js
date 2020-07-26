@@ -1,4 +1,3 @@
-import {Howl} from 'howler'
 const constraints = {
   video: false,
   audio: true
