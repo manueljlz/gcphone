@@ -15,7 +15,7 @@ const getters = {
     if (state.appelsInfo.hidden === true) {
       return getters.IntlString('APP_PHONE_NUMBER_HIDDEN')
     }
-    const num = getters.appelsDisplayNumber
+    const num = String(getters.appelsDisplayNumber)
     const contact = getters.contacts.find(e => e.number === num) || {}
     return contact.display || getters.IntlString('APP_PHONE_NUMBER_UNKNOWN')
   },

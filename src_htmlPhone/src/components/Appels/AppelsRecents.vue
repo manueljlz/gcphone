@@ -112,7 +112,7 @@ export default {
           this.appelsDeleteAllHistorique()
           break
         case 4 :
-          this.save(numero)
+          this.$router.push({name: 'contacts.view', params: {id: 0, number: numero}})
       }
     },
     async onEnter () {
