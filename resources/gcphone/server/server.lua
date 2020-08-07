@@ -3,7 +3,6 @@
 -- #Version 2.0
 --====================================================================================
 ESX = nil
-
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 math.randomseed(os.time()) 

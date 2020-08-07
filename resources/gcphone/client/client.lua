@@ -71,8 +71,10 @@ end --]]
 AddEventHandler('esx:onPlayerDeath', function()
   if menuIsOpen then
     menuIsOpen = false
+    TriggerEvent('gcPhone:setMenuStatus', false)
     SendNUIMessage({show = false})
     PhonePlayOut()
+    SetBigmapActive(0,0)
   end
 end)
 
@@ -652,12 +654,17 @@ function TooglePhone()
   SendNUIMessage({show = menuIsOpen})
   if menuIsOpen == true then 
     PhonePlayIn()
+    TriggerEvent('gcPhone:setMenuStatus', true)
+    SetBigmapActive(1,0)
   else
     PhonePlayOut()
+    TriggerEvent('gcPhone:setMenuStatus', false)
+    SetBigmapActive(0,0)
   end
 end
 RegisterNUICallback('faketakePhoto', function(data, cb)
   menuIsOpen = false
+  TriggerEvent('gcPhone:setMenuStatus', false)
   SendNUIMessage({show = false})
   cb()
   TriggerEvent('camera:open')
@@ -665,8 +672,10 @@ end)
 
 RegisterNUICallback('closePhone', function(data, cb)
   menuIsOpen = false
+  TriggerEvent('gcPhone:setMenuStatus', false)
   SendNUIMessage({show = false})
   PhonePlayOut()
+  SetBigmapActive(0,0)
   cb()
 end)
 
