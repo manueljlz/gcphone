@@ -42,6 +42,38 @@ end)
 --]]
 
 --====================================================================================
+--  SIM CARDS // Thanks to AshKetchumza for the idea an some code.
+--====================================================================================
+
+RegisterServerEvent('gcPhone:useSimCard')
+AddEventHandler('gcPhone:useSimCard', function(source, identifier)
+    local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+    local myPhoneNumber = nil
+    repeat
+        myPhoneNumber = getPhoneRandomNumber()
+        local id = getIdentifierByPhoneNumber(myPhoneNumber)
+    until id == nil
+    MySQL.Async.insert("UPDATE users SET phone_number = @myPhoneNumber WHERE identifier = @identifier", { 
+        ['@myPhoneNumber'] = myPhoneNumber,
+        ['@identifier'] = xPlayer.identifier
+    }, function (rows)
+        xPlayer.removeInventoryItem('sim_card', 1)
+        local num = getNumberPhone(xPlayer.identifier)
+        TriggerClientEvent("gcPhone:myPhoneNumber", _source, num)
+        TriggerClientEvent("gcPhone:contactList", _source, getContacts(identifier))
+        TriggerClientEvent("gcPhone:allMessage", _source, getMessages(identifier))
+        TriggerClientEvent('gcPhone:getBourse', _source, getBourse())
+        sendHistoriqueCall(_source, num)
+    end)
+end)
+
+
+ESX.RegisterUsableItem('sim_card', function (source)
+    TriggerEvent('gcPhone:useSimCard', source)
+end)
+
+--====================================================================================
 --  Utils
 --====================================================================================
 function getSourceFromIdentifier(identifier, cb)
