@@ -39,8 +39,8 @@
 
   "//": "REQUIRE https://github.com/citizenfx/screenshot-basic or set false",
   "enableTakePhoto": true,
-  "fileUploadService_Url": "https://wew.wtf/upload.php",
-  "fileUploadService_Field": "files[]",
+  "fileUploadService_Url": "https://gcphone.herokuapp.com/uploads/upload",
+  "fileUploadService_Field": "image",
 
   "background": {
     "White desert": "back001.jpg",
