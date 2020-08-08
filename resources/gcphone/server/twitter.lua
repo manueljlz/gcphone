@@ -284,7 +284,7 @@ end)
 --]]
 AddEventHandler('gcPhone:twitter_newTweets', function (tweet)
   -- print(json.encode(tweet))
-  local discord_webhook = GetConvar('discord_webhook', '')
+  local discord_webhook = Config.Discord_Webook
   if discord_webhook == '' then
     return
   end
@@ -293,17 +293,21 @@ AddEventHandler('gcPhone:twitter_newTweets', function (tweet)
   }
   local data = {
     ["username"] = tweet.author,
-    ["embeds"] = {{
-      ["thumbnail"] = {
-        ["url"] = tweet.authorIcon
-      },
-      ["color"] = 1942002,
-      ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ", tweet.time / 1000 )
-    }}
+    ["embeds"] = {
+      {
+        ["thumbnail"] = {
+          ["url"] = tweet.authorIcon
+        },
+        ["color"] = 1942002,
+        ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ", tweet.time / 1000 )
+      }
+    }
   }
+
   local isHttp = string.sub(tweet.message, 0, 7) == 'http://' or string.sub(tweet.message, 0, 8) == 'https://'
   local ext = string.sub(tweet.message, -4)
   local isImg = ext == '.png' or ext == '.pjg' or ext == '.gif' or string.sub(tweet.message, -5) == '.jpeg'
+
   if (isHttp and isImg) and true then
     data['embeds'][1]['image'] = { ['url'] = tweet.message }
   else
