@@ -284,7 +284,7 @@ end)
 --]]
 AddEventHandler('gcPhone:twitter_newTweets', function (tweet)
   -- print(json.encode(tweet))
-  local discord_webhook = Config.Discord_Webook
+  local discord_webhook = Config.Discord_Webhook
   if discord_webhook == '' then
     return
   end

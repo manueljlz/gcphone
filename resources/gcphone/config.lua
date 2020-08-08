@@ -25,3 +25,5 @@ Config.UseMumbleVoIP = false -- Use Frazzle's Mumble-VoIP Resource (Recomended!)
 Config.UseTokoVoIP   = false
 
 Config.ShowNumberNotification = false -- Show Number or Contact Name when you receive new SMS
+
+Config.Discord_Webhook = '' -- Set Discord Webhook (WIP)
