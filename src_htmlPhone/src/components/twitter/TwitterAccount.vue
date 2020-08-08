@@ -10,7 +10,7 @@
           <input type='button' class="btn btn-blue" @click.stop="state = STATES.NOTIFICATION" :value="IntlString('APP_TWITTER_NOTIFICATION')" />
         </div>
 
-        <div class="group bottom" data-type="button" @click.stop="state = STATES.NEW_ACCOUNT">
+        <div class="group bottom" style="margin-bottom:10px" data-type="button" @click.stop="state = STATES.NEW_ACCOUNT">
           <input type='button' class="btn btn-red" @click.stop="state = STATES.NEW_ACCOUNT" :value="IntlString('APP_TWITTER_ACCOUNT_NEW')" />
         </div>
       </template>
@@ -90,11 +90,14 @@
 
     <template v-else-if="state === STATES.ACCOUNT">
 
-      <div style="margin-top: 42px; margin-bottom: 42px;" class="group img" data-type="button" @click.stop="onPressChangeAvartar">
-        <img :src="twitterAvatarUrl" height="128" width="128" @click.stop="onPressChangeAvartar">
+      <img :src="twitterAvatarUrl" height="128" width="128" style="align-self: center;">
+
+      <div class="group" data-type="button" @click.stop="onPressChangeAvartar">
         <input type='button' class="btn btn-blue" :value="IntlString('APP_TWITTER_ACCOUNT_AVATAR')" @click.stop="onPressChangeAvartar" />
       </div>
-
+      <div class="group" data-type="button" @click.stop="onPressChangeAvartartake">
+        <input type='button' class="btn btn-blue" :value="IntlString('APP_TWITTER_ACCOUNT_AVATAR_TAKE')" @click.stop="onPressChangeAvartartake" />  
+      </div>
       <div class="group" data-type="button" @click.stop="changePassword">
         <input type='button' class="btn btn-red" :value="IntlString('APP_TWITTER_ACCOUNT_CHANGE_PASSWORD')" @click.stop="changePassword"/>
       </div>
@@ -102,7 +105,9 @@
     </template>
 
     <template v-else-if="state === STATES.NEW_ACCOUNT">
-
+      <div style="margin-left: auto; margin-right: auto;" class="group img" data-type="button">
+        <img style="margin-bottom:10px" src="/html/static/img/twitter/bird.png">
+      </div>
       <div class="group inputText" data-type="text" data-maxlength='64' data-defaultValue="">
           <input type="text" :value="localAccount.username" @change="setLocalAccount($event, 'username')">
           <span class="highlight"></span>
@@ -125,12 +130,7 @@
           <label>{{ IntlString('APP_TWITTER_NEW_ACCOUNT_PASSWORD_CONFIRM') }}</label>
       </div>
 
-      <div style="margin-top: 42px; margin-bottom: 42px;" class="group img" data-type="button" @click.stop="setLocalAccountAvartar($event)">
-        <img :src="localAccount.avatarUrl" height="128" width="128" @click.stop="setLocalAccountAvartar($event)">
-        <input type='button' class="btn btn-blue" :value="IntlString('APP_TWITTER_NEW_ACCOUNT_AVATAR')" @click.stop="setLocalAccountAvartar($event)"/>
-      </div>
-
-      <div class="group" data-type="button" @click.stop="createAccount">
+      <div class="group" data-type="button" style="margin-right: 7px" @click.stop="createAccount">
         <input type='button' class="btn" :class="validAccount ? 'btn-blue' : 'btn-gray'" :value="IntlString('APP_TWIITER_ACCOUNT_CREATE')" @click.stop="createAccount"/>
       </div>
     </template>
@@ -160,7 +160,7 @@ export default {
         username: '',
         password: '',
         passwordConfirm: '',
-        avatarUrl: '/html/static/img/twitter/default_profile.png'
+        avatarUrl: 'https://gcphone.nyc3.cdn.digitaloceanspaces.com/default_profile.png'
       },
       notification: 0,
       notificationSound: false
@@ -259,12 +259,28 @@ export default {
     setLocalAccount ($event, key) {
       this.localAccount[key] = $event.target.value
     },
+    async setLocalAccountAvartarTake ($event) {
+      try {
+        const { url } = await this.$phoneAPI.takePhoto()
+        if (url !== null && url !== undefined) {
+          this.localAccount.avatarUrl = url
+        }
+      } catch (e) {}
+    },
     async setLocalAccountAvartar ($event) {
       try {
         const data = await Modal.CreateTextModal({
           text: this.twitterAvatarUrl || 'https://i.imgur.com/'
         })
         this.localAccount.avatarUrl = data.text
+      } catch (e) {}
+    },
+    async onPressChangeAvartartake () {
+      try {
+        const { url } = await this.$phoneAPI.takePhoto()
+        if (url !== null && url !== undefined) {
+          this.twitterSetAvatar({avatarUrl: url})
+        }
       } catch (e) {}
     },
     async onPressChangeAvartar () {

@@ -9,7 +9,7 @@
           v-bind:class="{ select: key === selectMessage}"
           >
           <div class="tweet-img">
-            <img :src="tweet.authorIcon || 'html/static/img/twitter/default_profile.png'" width="48" height="48"/>
+            <img :src="tweet.authorIcon || 'https://gcphone.nyc3.cdn.digitaloceanspaces.com/default_profile.png'" style="max-width:48px; max-height:48px;"/>
           </div>
           <div class="tweet-content">
             <div class="tweet-head">
