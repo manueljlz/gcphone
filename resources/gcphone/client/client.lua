@@ -451,6 +451,9 @@ end)
 
 
 function startCall (phone_number, rtcOffer, extraData)
+  if rtcOffer == nil then
+    rtcOffer = ''
+  end
   TriggerServerEvent('gcPhone:startCall', phone_number, rtcOffer, extraData)
 end
 

@@ -673,7 +673,7 @@ function onCallFixePhone (source, phone_number, rtcOffer, extraData)
     if extraData ~= nil and extraData.useNumber ~= nil then
         srcPhone = extraData.useNumber
     else
-        srcPhone = getNumberPhone(identifier)
+        srcPhone = '###-####' -- This change was made for public phones without phone number reading in mind
     end
 
     AppelsEnCours[indexCall] = {
