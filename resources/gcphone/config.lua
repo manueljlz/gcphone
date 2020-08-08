@@ -26,4 +26,4 @@ Config.UseTokoVoIP   = false
 
 Config.ShowNumberNotification = false -- Show Number or Contact Name when you receive new SMS
 
-discord_webhook = '' -- Set Discord Webhook (WIP)
+Config.Discord_Webhook = '' -- Set Discord Webhook (WIP)
