@@ -734,7 +734,7 @@ RegisterNUICallback('takePhoto', function(data, cb)
         local resp = json.decode(data)
         DestroyMobilePhone()
         CellCamActivate(false, false)
-        cb(json.encode({ url = resp.files[1].url }))
+        cb(json.encode({ url = resp.url }))
       end)
       takePhoto = false
     end
