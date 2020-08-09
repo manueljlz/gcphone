@@ -279,8 +279,8 @@ class PhoneAPI {
   twitter_postTweet (username, password, message) {
     this.post('twitter_postTweet', { username, password, message })
   }
-  twitter_postTweetImg (username, password, img) {
-    this.post('twitter_postTweetImg', { username, password, img })
+  twitter_postTweetImg (username, password, message) {
+    this.post('twitter_postTweetImg', { username, password, message })
   }
   twitter_toggleLikeTweet (username, password, tweetId) {
     this.post('twitter_toggleLikeTweet', { username, password, tweetId })

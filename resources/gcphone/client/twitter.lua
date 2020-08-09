@@ -73,6 +73,10 @@ RegisterNUICallback('twitter_postTweet', function(data, cb)
   TriggerServerEvent('gcPhone:twitter_postTweets', data.username or '', data.password or '', data.message)
 end)
 
+RegisterNUICallback('twitter_postTweetImg', function(data, cb)
+  TriggerServerEvent('gcPhone:twitter_postTweets', data.username or '', data.password or '', data.message)
+end)
+
 RegisterNUICallback('twitter_toggleLikeTweet', function(data, cb)
   TriggerServerEvent('gcPhone:twitter_toogleLikeTweet', data.username or '', data.password or '', data.tweetId)
 end)
