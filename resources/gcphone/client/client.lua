@@ -283,12 +283,6 @@ AddEventHandler("gcPhone:forceOpenPhone", function(_myPhoneNumber)
   end
 end)
 
-function tablelength(T)
-  local count = 0
-  for _ in pairs(T) do count = count + 1 end
-  return count
-end
-
 function styleBlip(blip, type, number, player)
   local blipLabel = '#' .. number
   local blipLabelPrefix = 'Phone GPS Location: '
@@ -315,7 +309,6 @@ function styleBlip(blip, type, number, player)
   -- [[ type 1 ]] --
   if (type == 1) then
     blipLabelPrefix = 'Emergency SMS Sender Location: '
-    ShowNumberOnBlip(tablelength(gpsBlips))
     ShowCrewIndicatorOnBlip(blip, true)
     SetBlipColour(blip, 5)
   end
