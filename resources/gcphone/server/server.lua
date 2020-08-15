@@ -246,16 +246,39 @@ function _internalAddMessage(transmitter, receiver, message, owner)
     })[1]
 end
 
-function addMessage(source, identifier, phone_number, message)
+function addMessage(source, identifier, phone_number, message, gpsData)
     local sourcePlayer = tonumber(source)
     local otherIdentifier = getIdentifierByPhoneNumber(phone_number)
     local myPhone = getNumberPhone(identifier)
+    local message = '' .. message ..''
+    local isRealtimeGPS = false
+    local gpsTimeout = Config.ShareRealtimeGPSDefaultTimeInMs
+
+    if (gpsData) then
+        gpsTimeout = gpsData
+    end
+
+    if (message == '%posrealtime%') then
+        local timeInMinutes = ESX.Math.Round( gpsTimeout / 1000 / 60 )
+        local timeString = (timeInMinutes == nil) and '' or ' ' .. tostring(timeInMinutes) .. ' min'
+        message = 'GPS Live Position:' .. timeString .. ''
+        isRealtimeGPS = true
+    end
+
+    if (message == '%pos%') then
+        message = 'GPS Position: ' .. gpsData.x .. ', ' .. gpsData.y
+    end
+
     if otherIdentifier ~= nil then 
         local tomess = _internalAddMessage(myPhone, phone_number, message, 0)
         getSourceFromIdentifier(otherIdentifier, function (osou)
-            if tonumber(osou) ~= nil then 
+            local targetPlayer = tonumber(osou)
+            if targetPlayer ~= nil then 
                 -- TriggerClientEvent("gcPhone:allMessage", osou, getMessages(otherIdentifier))
-                TriggerClientEvent("gcPhone:receiveMessage", tonumber(osou), tomess)
+                if (isRealtimeGPS == true) then
+                    TriggerClientEvent('gcPhone:receiveLivePosition', targetPlayer, sourcePlayer, gpsTimeout, message, message)
+                end
+                TriggerClientEvent("gcPhone:receiveMessage", targetPlayer, tomess)
             end
         end) 
     end
@@ -292,12 +315,12 @@ function deleteAllMessage(identifier)
 end
 
 RegisterServerEvent('gcPhone:sendMessage')
-AddEventHandler('gcPhone:sendMessage', function(phoneNumber, message)
+AddEventHandler('gcPhone:sendMessage', function(phoneNumber, message, gpsData)
     local _source = source
     local sourcePlayer = tonumber(_source)
 	xPlayer = ESX.GetPlayerFromId(_source)
     identifier = xPlayer.identifier
-    addMessage(sourcePlayer, identifier, phoneNumber, message)
+    addMessage(sourcePlayer, identifier, phoneNumber, message, gpsData)
 end)
 
 RegisterServerEvent('gcPhone:deleteMessage')

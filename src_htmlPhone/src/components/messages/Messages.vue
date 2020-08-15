@@ -260,16 +260,17 @@ export default {
       try {
         this.ignoreControls = true
         let choix = [
-          {id: 1, title: this.IntlString('APP_MESSAGE_SEND_GPS'), icons: 'fa-location-arrow'},
-          {id: -1, title: this.IntlString('CANCEL'), icons: 'fa-undo'}
+          {id: 1, title: this.IntlString('APP_MESSAGE_SEND_GPS'), icons: 'fa-location-arrow'}
         ]
+        choix.push({
+          id: 3,
+          title: this.IntlString('APP_MESSAGE_SEND_GPS_REALTIME'),
+          icons: 'fa-map-marked-alt'
+        })
         if (this.enableTakePhoto) {
-          choix = [
-            {id: 1, title: this.IntlString('APP_MESSAGE_SEND_GPS'), icons: 'fa-location-arrow'},
-            {id: 2, title: this.IntlString('APP_MESSAGE_SEND_PHOTO'), icons: 'fa-picture-o'},
-            {id: -1, title: this.IntlString('CANCEL'), icons: 'fa-undo'}
-          ]
+          choix.push({id: 2, title: this.IntlString('APP_MESSAGE_SEND_PHOTO'), icons: 'fa-picture-o'})
         }
+        choix.push({id: -1, title: this.IntlString('CANCEL'), icons: 'fa-undo'})
         const data = await Modal.CreateModal({ choix })
         if (data.id === 1) {
           this.sendMessage({
@@ -283,6 +284,35 @@ export default {
             this.sendMessage({
               phoneNumber: this.phoneNumber,
               message: url
+            })
+          }
+        }
+        if (data.id === 3) {
+          /**
+            Real-time GPS timer selection
+          */
+          const gpsTimerResponse = await Modal.CreateModal({choix: [
+            {
+              // ~1 minute
+              id: 60000,
+              title: this.IntlString('APP_MESSAGE_SEND_GPS_REALTIME_TIME_1')
+            },
+            {
+              // ~5 minutes
+              id: 60000 * 5,
+              title: this.IntlString('APP_MESSAGE_SEND_GPS_REALTIME_TIME_2')
+            },
+            {
+              // ~10 minutes
+              id: 60000 * 10,
+              title: this.IntlString('APP_MESSAGE_SEND_GPS_REALTIME_TIME_3')
+            }
+          ]})
+          if (gpsTimerResponse.id > 0) {
+            this.sendMessage({
+              phoneNumber: this.phoneNumber,
+              message: '%posrealtime%',
+              gpsData: gpsTimerResponse.id || 10000
             })
           }
         }

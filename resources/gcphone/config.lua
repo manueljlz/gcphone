@@ -27,3 +27,5 @@ Config.UseTokoVoIP   = false
 Config.ShowNumberNotification = false -- Show Number or Contact Name when you receive new SMS
 
 Config.Discord_Webhook = '' -- Set Discord Webhook (WIP)
+
+Config.ShareRealtimeGPSDefaultTimeInMs = 60000 -- Set default realtime GPS sharing expiration time in milliseconds

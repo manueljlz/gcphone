@@ -447,9 +447,14 @@
       "APP_CONTACT_LABEL_NUMBER": "Number",
       "APP_MESSAGE_TITLE": "Messages",
       "APP_MESSAGE_NEW_MESSAGE": "New Message",
+      "APP_MESSAGE_MESS_NUMBER": "Number ",
       "APP_MESSAGE_ERASE_CONVERSATION": "Delete Call",
       "APP_MESSAGE_ERASE_ALL_CONVERSATIONS": "Delete All Messages",
       "APP_MESSAGE_SEND_GPS": "Send GPS Position",
+      "APP_MESSAGE_SEND_GPS_REALTIME": "Share Real-time GPS Position",
+      "APP_MESSAGE_SEND_GPS_REALTIME_TIME_1": "1 Minute",
+      "APP_MESSAGE_SEND_GPS_REALTIME_TIME_2": "5 Minutes",
+      "APP_MESSAGE_SEND_GPS_REALTIME_TIME_3": "10 Minutes",
       "APP_MESSAGE_SET_GPS": "GPS Position",
       "APP_MESSAGE_ZOOM_IMG": "Zoom In",
       "APP_MESSAGE_DELETE": "Delete",
@@ -513,7 +518,6 @@
       "APP_BANK_BUTTON_CANCEL": "Cancel",
       "APP_DARKTCHAT_NEW_NOTE": "New note",
       "APP_DARKTCHAT_DELETE_NOTE": "Delete note",
-
       "TIMEAGO": [
         "just now",
         ["%s second ago", "%s seconds ago"],

@@ -280,6 +280,22 @@ AddEventHandler("gcPhone:forceOpenPhone", function(_myPhoneNumber)
     TooglePhone()
   end
 end)
+
+
+RegisterNetEvent('gcPhone:receiveLivePosition')
+AddEventHandler('gcPhone:receiveLivePosition', function(sourcePlayerServerId, timeoutInMilliseconds)
+  Citizen.CreateThread(function()
+    local sourcePlayer = GetPlayerFromServerId(sourcePlayerServerId)
+    local sourcePed = GetPlayerPed(sourcePlayer)
+    local blip = AddBlipForEntity(sourcePed)
+    SetBlipColour(blip, 3)
+    ShowFriendIndicatorOnBlip(blip, true)
+    Citizen.Wait(timeoutInMilliseconds)
+    SetBlipFlashes(blip, true)
+    Citizen.Wait(10000)
+    RemoveBlip(blip)
+  end)
+end)
  
 --====================================================================================
 --  Events
@@ -582,15 +598,16 @@ end)
 --====================================================================================
 --  Event - Messages
 --====================================================================================
+
 RegisterNUICallback('getMessages', function(data, cb)
   cb(json.encode(messages))
 end)
 RegisterNUICallback('sendMessage', function(data, cb)
   if data.message == '%pos%' then
     local myPos = GetEntityCoords(PlayerPedId())
-    data.message = 'GPS: ' .. myPos.x .. ', ' .. myPos.y
+    data.gpsData = myPos
   end
-  TriggerServerEvent('gcPhone:sendMessage', data.phoneNumber, data.message)
+  TriggerServerEvent('gcPhone:sendMessage', data.phoneNumber, data.message, data.gpsData)
 end)
 RegisterNUICallback('deleteMessage', function(data, cb)
   deleteMessage(data.id)
