@@ -24,6 +24,8 @@ local takePhoto = false
 local hasFocus = false
 local TokoVoipID = nil
 
+local gpsBlips = {}
+
 local PhoneInCall = {}
 local currentPlaySound = false
 local soundDistanceMax = 8.0
@@ -281,20 +283,70 @@ AddEventHandler("gcPhone:forceOpenPhone", function(_myPhoneNumber)
   end
 end)
 
+function tablelength(T)
+  local count = 0
+  for _ in pairs(T) do count = count + 1 end
+  return count
+end
+
+function styleBlip(blip, type, number, player)
+  local blipLabel = '#' .. number
+  local blipLabelPrefix = 'Phone GPS Location: '
+
+  -- [[ type 0 ]] --
+  if (type == 0) then
+    local isContact = false
+    for k,contact in pairs(contacts) do
+      if contact.number == number then
+        blipLabel = contacts[k].display .. ' (' .. blipLabel .. ')'
+        isContact = true
+        break
+      end
+    end
+
+    ShowCrewIndicatorOnBlip(blip, true)
+    if (isContact == true) then
+      SetBlipColour(blip, 2)
+    else
+      SetBlipColour(blip, 4)
+    end
+  end
+
+  -- [[ type 1 ]] --
+  if (type == 1) then
+    blipLabelPrefix = 'Emergency SMS Sender Location: '
+    ShowNumberOnBlip(tablelength(gpsBlips))
+    ShowCrewIndicatorOnBlip(blip, true)
+    SetBlipColour(blip, 5)
+  end
+
+  BeginTextCommandSetBlipName("STRING")
+  AddTextComponentString(blipLabelPrefix .. blipLabel)
+  EndTextCommandSetBlipName(blip)
+
+  SetBlipSecondaryColour(blip, 255, 0, 0)
+  SetBlipScale(blip, 0.9)
+end
 
 RegisterNetEvent('gcPhone:receiveLivePosition')
-AddEventHandler('gcPhone:receiveLivePosition', function(sourcePlayerServerId, timeoutInMilliseconds)
-  Citizen.CreateThread(function()
+AddEventHandler('gcPhone:receiveLivePosition', function(sourcePlayerServerId, timeoutInMilliseconds, sourceNumber, type)
+  if (sourcePlayerServerId ~= nil and sourceNumber ~= nil) then
+    local blipId = sourceNumber
+    if (gpsBlips[blipId] ~= nil) then
+      RemoveBlip(gpsBlips[blipId])
+      gpsBlips[blipId] = nil
+    end
     local sourcePlayer = GetPlayerFromServerId(sourcePlayerServerId)
     local sourcePed = GetPlayerPed(sourcePlayer)
-    local blip = AddBlipForEntity(sourcePed)
-    SetBlipColour(blip, 3)
-    ShowFriendIndicatorOnBlip(blip, true)
-    Citizen.Wait(timeoutInMilliseconds)
-    SetBlipFlashes(blip, true)
-    Citizen.Wait(10000)
-    RemoveBlip(blip)
-  end)
+    gpsBlips[blipId] = AddBlipForEntity(sourcePed)
+    styleBlip(gpsBlips[blipId], type, sourceNumber, sourcePlayer)
+    Citizen.SetTimeout(timeoutInMilliseconds, function()
+      SetBlipFlashes(gpsBlips[blipId], true)
+      Citizen.Wait(10000)
+      RemoveBlip(gpsBlips[blipId])
+      gpsBlips[blipId] = nil
+    end)
+  end
 end)
  
 --====================================================================================

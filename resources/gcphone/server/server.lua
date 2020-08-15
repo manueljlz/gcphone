@@ -254,11 +254,10 @@ function addMessage(source, identifier, phone_number, message, gpsData)
     local isRealtimeGPS = false
     local gpsTimeout = Config.ShareRealtimeGPSDefaultTimeInMs
 
-    if (gpsData) then
-        gpsTimeout = gpsData
-    end
-
     if (message == '%posrealtime%') then
+        if (gpsData) then
+            gpsTimeout = gpsData.time
+        end
         local timeInMinutes = ESX.Math.Round( gpsTimeout / 1000 / 60 )
         local timeString = (timeInMinutes == nil) and '' or ' ' .. tostring(timeInMinutes) .. ' min'
         message = 'GPS Live Position:' .. timeString .. ''
@@ -276,7 +275,7 @@ function addMessage(source, identifier, phone_number, message, gpsData)
             if targetPlayer ~= nil then 
                 -- TriggerClientEvent("gcPhone:allMessage", osou, getMessages(otherIdentifier))
                 if (isRealtimeGPS == true) then
-                    TriggerClientEvent('gcPhone:receiveLivePosition', targetPlayer, sourcePlayer, gpsTimeout, message, message)
+                    TriggerClientEvent('gcPhone:receiveLivePosition', targetPlayer, sourcePlayer, gpsTimeout, myPhone, 0)
                 end
                 TriggerClientEvent("gcPhone:receiveMessage", targetPlayer, tomess)
             end

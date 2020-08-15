@@ -289,9 +289,9 @@ export default {
         }
         if (data.id === 3) {
           /**
-            Real-time GPS timer selection
+            Real-time GPS time selection
           */
-          const gpsTimerResponse = await Modal.CreateModal({choix: [
+          const gpsTimeResponse = await Modal.CreateModal({choix: [
             {
               // ~1 minute
               id: 60000,
@@ -308,11 +308,13 @@ export default {
               title: this.IntlString('APP_MESSAGE_SEND_GPS_REALTIME_TIME_3')
             }
           ]})
-          if (gpsTimerResponse.id > 0) {
+          if (gpsTimeResponse.id > 0) {
             this.sendMessage({
               phoneNumber: this.phoneNumber,
               message: '%posrealtime%',
-              gpsData: gpsTimerResponse.id || 10000
+              gpsData: {
+                time: gpsTimeResponse.id || 10000
+              }
             })
           }
         }
