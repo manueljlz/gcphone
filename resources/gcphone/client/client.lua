@@ -167,7 +167,7 @@ function showFixePhoneHelper (coords)
     local dist = GetDistanceBetweenCoords(
       data.coords.x, data.coords.y, data.coords.z,
       coords.x, coords.y, coords.z, 1)
-    if dist <= 2.5 then
+    if dist <= 2.0 then
       SetTextComponentFormat("STRING")
       AddTextComponentString(_U('use_fixed', data.name, number))
       DisplayHelpTextFromStringLabel(0, 0, 0, -1)
@@ -421,7 +421,11 @@ end)
 
 
 function startCall (phone_number, rtcOffer, extraData)
+  if rtcOffer == nil then
+    rtcOffer = ''
+  end
   TriggerServerEvent('gcPhone:startCall', phone_number, rtcOffer, extraData)
+  
 end
 
 function acceptCall (infoCall, rtcAnswer)
@@ -622,12 +626,18 @@ function TooglePhone()
   SendNUIMessage({show = menuIsOpen})
   if menuIsOpen == true then 
     PhonePlayIn()
+    TriggerEvent('gcPhone:setMenuStatus', true)
+    SetBigmapActive(1,0)    
   else
     PhonePlayOut()
+    TriggerEvent('gcPhone:setMenuStatus', false)
+    SetBigmapActive(0,0)  
   end
 end
 RegisterNUICallback('faketakePhoto', function(data, cb)
   menuIsOpen = false
+  TriggerEvent('gcPhone:setMenuStatus', false)
+  
   SendNUIMessage({show = false})
   cb()
   TriggerEvent('camera:open')
@@ -635,8 +645,10 @@ end)
 
 RegisterNUICallback('closePhone', function(data, cb)
   menuIsOpen = false
+  TriggerEvent('gcPhone:setMenuStatus', false)
   SendNUIMessage({show = false})
   PhonePlayOut()
+  SetBigmapActive(0,0)
   cb()
 end)
 
@@ -663,6 +675,7 @@ AddEventHandler('onClientResourceStart', function(res)
   DoScreenFadeIn(300)
   if res == "gcphone" then
     TriggerServerEvent('gcPhone:allUpdate')
+    Citizen.Wait(120000)
   end
 end)
 
