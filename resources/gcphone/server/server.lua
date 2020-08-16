@@ -3,6 +3,7 @@
 -- #Version 2.0
 --====================================================================================
 ESX = nil
+
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 math.randomseed(os.time()) 
@@ -39,38 +40,6 @@ end
         end
 end)
 --]]
-
---====================================================================================
---  SIM CARDS // Thanks to AshKetchumza for the idea an some code.
---====================================================================================
-
-RegisterServerEvent('gcPhone:useSimCard')
-AddEventHandler('gcPhone:useSimCard', function(source, identifier)
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    local myPhoneNumber = nil
-    repeat
-        myPhoneNumber = getPhoneRandomNumber()
-        local id = getIdentifierByPhoneNumber(myPhoneNumber)
-    until id == nil
-    MySQL.Async.insert("UPDATE users SET phone_number = @myPhoneNumber WHERE identifier = @identifier", { 
-        ['@myPhoneNumber'] = myPhoneNumber,
-        ['@identifier'] = xPlayer.identifier
-    }, function (rows)
-        xPlayer.removeInventoryItem('sim_card', 1)
-        local num = getNumberPhone(xPlayer.identifier)
-        TriggerClientEvent("gcPhone:myPhoneNumber", _source, num)
-        TriggerClientEvent("gcPhone:contactList", _source, getContacts(identifier))
-        TriggerClientEvent("gcPhone:allMessage", _source, getMessages(identifier))
-        TriggerClientEvent('gcPhone:getBourse', _source, getBourse())
-        sendHistoriqueCall(_source, num)
-    end)
-end)
-
-
-ESX.RegisterUsableItem('sim_card', function (source)
-    TriggerEvent('gcPhone:useSimCard', source)
-end)
 
 --====================================================================================
 --  Utils
@@ -407,12 +376,6 @@ AddEventHandler('gcPhone:getHistoriqueCall', function()
     sendHistoriqueCall(sourcePlayer, num)
 end)
 
-RegisterServerEvent('gcPhone:register_FixePhone')
-AddEventHandler('gcPhone:register_FixePhone', function(phone_number, coords)
-	Config.FixePhone[phone_number] = {name = _U('phone_booth'), coords = {x = coords.x, y = coords.y, z = coords.z}}
-	TriggerClientEvent('gcPhone:register_FixePhone', -1, phone_number, Config.FixePhone[phone_number])
-end)
-
 RegisterServerEvent('gcPhone:internal_startCall')
 AddEventHandler('gcPhone:internal_startCall', function(source, phone_number, rtcOffer, extraData)
     if Config.FixePhone[phone_number] ~= nil then
@@ -596,7 +559,7 @@ AddEventHandler('gcPhone:allUpdate', function()
     local xPlayer = ESX.GetPlayerFromId(_source)
     while xPlayer == nil do
         xPlayer = ESX.GetPlayerFromId(_source)
-        Citizen.Wait(10000)
+        Citizen.Wait(1000)
     end
     local identifier = xPlayer.identifier
     local num = getNumberPhone(identifier)
@@ -672,7 +635,7 @@ function onCallFixePhone (source, phone_number, rtcOffer, extraData)
     if extraData ~= nil and extraData.useNumber ~= nil then
         srcPhone = extraData.useNumber
     else
-        srcPhone = '###-####' -- This change was made for public phones without phone number reading in mind
+        srcPhone = getNumberPhone(identifier)
     end
 
     AppelsEnCours[indexCall] = {
@@ -706,9 +669,9 @@ function onAcceptFixePhone(source, infoCall, rtcAnswer)
         PhoneFixeInfo[id] = nil
         TriggerClientEvent('gcPhone:notifyFixePhoneChange', -1, PhoneFixeInfo)
         TriggerClientEvent('gcPhone:acceptCall', AppelsEnCours[id].transmitter_src, AppelsEnCours[id], true)
-        SetTimeout(1000, function() -- change to +1000, if necessary.
-            TriggerClientEvent('gcPhone:acceptCall', AppelsEnCours[id].receiver_src, AppelsEnCours[id], false)
-        end)
+	SetTimeout(1000, function() -- change to +1000, if necessary.
+       	TriggerClientEvent('gcPhone:acceptCall', AppelsEnCours[id].receiver_src, AppelsEnCours[id], false)
+	end)
         saveAppels(AppelsEnCours[id])
     end
 end
