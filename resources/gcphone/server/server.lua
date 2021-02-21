@@ -3,7 +3,6 @@
 -- #Version 2.0
 --====================================================================================
 ESX = nil
-
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 math.randomseed(os.time()) 
@@ -72,8 +71,6 @@ end)
 ESX.RegisterUsableItem('sim_card', function (source)
     TriggerEvent('gcPhone:useSimCard', source)
 end)
-
-
 
 --====================================================================================
 --  Utils
@@ -675,7 +672,7 @@ function onCallFixePhone (source, phone_number, rtcOffer, extraData)
     if extraData ~= nil and extraData.useNumber ~= nil then
         srcPhone = extraData.useNumber
     else
-        srcPhone = getNumberPhone(identifier)
+        srcPhone = '###-####' -- This change was made for public phones without phone number reading in mind
     end
 
     AppelsEnCours[indexCall] = {
@@ -709,9 +706,9 @@ function onAcceptFixePhone(source, infoCall, rtcAnswer)
         PhoneFixeInfo[id] = nil
         TriggerClientEvent('gcPhone:notifyFixePhoneChange', -1, PhoneFixeInfo)
         TriggerClientEvent('gcPhone:acceptCall', AppelsEnCours[id].transmitter_src, AppelsEnCours[id], true)
-	SetTimeout(1000, function() -- change to +1000, if necessary.
-       	TriggerClientEvent('gcPhone:acceptCall', AppelsEnCours[id].receiver_src, AppelsEnCours[id], false)
-	end)
+        SetTimeout(1000, function() -- change to +1000, if necessary.
+            TriggerClientEvent('gcPhone:acceptCall', AppelsEnCours[id].receiver_src, AppelsEnCours[id], false)
+        end)
         saveAppels(AppelsEnCours[id])
     end
 end
