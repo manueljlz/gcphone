@@ -21,7 +21,7 @@ npm run build --report
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 **Functions**
-
+``` bash
 Contact list
 Send SMS
 Calls
@@ -35,9 +35,9 @@ Fixed bug numeric keyboard script
 Added different cases for iphone 11
 Added new background images
 Renewed the complete aesthetics of the gcphone as well as its dimensions
-
+```
 **Instructions for use**
-
+``` bash
 To put the gcphone to work on your server you must follow these steps
 
 1º Copy all the files from the resources folder and add them to the folder called gcphone on your server
@@ -47,9 +47,9 @@ To put the gcphone to work on your server you must follow these steps
 3º In order to make use of sending messages to public services, you must have the following script on your server and configure it for operation
 
 4º If once the gcphone is inserted, it does not load the images, try to delete the cache of the server and your FiveM and it will be ready for operation
-
+```
 **Requirements**
-
+``` bash
 Official website esx_addons_gcphone -> https://github.com/N3MTV/gcphone/tree/master/resources/esx_addons_gcphone
 Official website new_banking -> https://github.com/NewWayRP/new_banking
 Credits
@@ -64,3 +64,4 @@ License
 GNU v3
 
 Manuel (ElBichop)
+```
